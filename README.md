@@ -1,8 +1,10 @@
-#Webpack React development environment from scratch
+# Webpack React development environment from scratch
 
-To start developing, first clone this repo::
+To start developing, first clone this repo:
 
-  git clone
+```
+git clone https://github.com/alvyjudy/alexwebsite.git
+```
 
 Then, inside the repository, run ``npm install`` to install all the
 required dependencies.
