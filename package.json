@@ -27,6 +27,6 @@
     "file-loader": "",
     "style-loader": "1.2.1",
     "css-loader": "3.6.0",
-    "react-router": "5.2.0"
+    "react-router-dom": "5.2.0"
   }
 }
