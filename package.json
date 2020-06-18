@@ -23,6 +23,9 @@
     "html-loader": "",
     "webpack": "",
     "webpack-cli": "",
-    "webpack-dev-server": ""
+    "webpack-dev-server": "",
+    "file-loader": "",
+    "style-loader": "1.2.1",
+    "css-loader": "3.6.0"
   }
 }

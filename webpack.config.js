@@ -12,10 +12,21 @@ module.exports = {
       },
       {
         test: /\.html$/,
+        use: {
+          loader: "html-loader"
+        }
+      },
+      {
+        test: /\.(jpeg|jpg|png)$/,
+        use: {
+          loader: "file-loader"
+        }
+      },
+      {
+        test: /\.css$/,
         use: [
-          {
-            loader: "html-loader"
-          }
+          'style-loader',
+          'css-loader',
         ]
       }
     ]
