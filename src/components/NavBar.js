@@ -35,7 +35,7 @@ class NavBar extends React.Component {
 }
 
 
-class NavItems extends React.Compoennt {
+class NavItems extends React.Component {
   render() {
     return (
       <ul>
