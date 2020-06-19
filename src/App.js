@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDom from'react-dom';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+
+import NavBar from './components/NavBar.js';
+
 //import "./App.css";
-//import NavBar from './components/NavBar.js';
 //import ItemView from './components/InsertItems.js';
 
 
@@ -18,11 +21,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <p>Hello world</p>
-        //<NavBar />;
-        //<ItemView category={this.state.category} />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <NavBar />
+        </div>
+      </BrowserRouter>
     );
   }
 }
