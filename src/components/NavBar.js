@@ -8,22 +8,20 @@ class NavBar extends React.Component {
   render() {
     return (
       <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/cart">Shopping cart</Link>
-          </li>
-        </ul>
+        <NavItems />
+        <NavItems />
 
         <Switch>
           <Route exact path="/">
-            <ItemContainer />
+            <ItemContainer content='top'/>
           </Route>
 
           <Route exact path="/aboutus">
-            <ItemContainer />
+            <ItemContainer content='aboutus' />
+          </Route>
+
+          <Route exact path='/contact'>
+            <ItemContainer content='contact' />
           </Route>
 
           <Route exact path="/cart">
@@ -37,8 +35,24 @@ class NavBar extends React.Component {
 }
 
 
-
-
-
+class NavItems extends React.Compoennt {
+  render() {
+    return (
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/cart">Shopping cart</Link>
+        </li>
+        <li>
+          <Link to='/aboutus'>About us</Link>
+        </li>
+        <li>
+          <Link to='/contact'>Contact</Link>
+        </li>
+    </ul>);
+  }
+}
 
 export default NavBar;
