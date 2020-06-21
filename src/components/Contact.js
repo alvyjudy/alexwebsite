@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from'react-dom';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import styles from 'Contact.module.css';
+import styles from '../stylesheets/Contact.module.css';
 
 class Contact extends React.Component {
   constructor(props) {

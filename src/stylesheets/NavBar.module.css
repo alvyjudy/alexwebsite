@@ -1,5 +1,5 @@
 .NavBarContainer {
-  composes: OverallAppearance from "./Shared.css";
+  composes: OverallAppearance from "./Shared.module.css";
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -14,7 +14,7 @@
 }
 
 .NavBarItem {
-  composes: OverallAppearance from "./Shared.css";
+  composes: OverallAppearance from "./Shared.module.css";
   text-decoration: none;
   margin: 20px;
 
