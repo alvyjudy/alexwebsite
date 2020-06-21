@@ -1,0 +1,21 @@
+.NavBarContainer {
+  composes: OverallAppearance from "./shared.css";
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.NavBarTop {
+  composes: NavBarContainer;
+}
+
+.NavBarBot {
+  composes: NavBarContainer;
+}
+
+.NavBarItem {
+  composes: OverallAppearance from "./shared.css";
+  text-decoration: none;
+  margin: 20px;
+
+}
