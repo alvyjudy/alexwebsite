@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import ItemContainer from './ItemContainer';
 import Cart from './Cart';
 
-import styles from '../stylesheets/NavBar.css';
+import styles from '../stylesheets/NavBar.module.css';
 
 class NavBar extends React.Component {
   insertRoutes() {
