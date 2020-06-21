@@ -4,13 +4,12 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import ItemContainer from './ItemContainer';
 import Cart from './Cart';
 
-class NavBar extends React.Component {
-  render() {
-    return (
-      <div>
-        <NavItems />
-        <NavItems />
+import styles from '../stylesheets/NavBar.css';
 
+class NavBar extends React.Component {
+  insertRoutes() {
+    return (
+      <React.Fragment>
         <Switch>
           <Route exact path="/">
             <ItemContainer content='top'/>
@@ -28,7 +27,14 @@ class NavBar extends React.Component {
             <Cart />
           </Route>
         </Switch>
-
+      </React.Fragment>
+    )
+  }
+  render() {
+    return (
+      <div>
+        <NavItems />
+        {this.insertRoutes()}
       </div>
     )
   }
@@ -38,20 +44,13 @@ class NavBar extends React.Component {
 class NavItems extends React.Component {
   render() {
     return (
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/cart">Shopping cart</Link>
-        </li>
-        <li>
-          <Link to='/aboutus'>About us</Link>
-        </li>
-        <li>
-          <Link to='/contact'>Contact</Link>
-        </li>
-    </ul>);
+      <div className={styles.NavBarContainer}>
+        <Link to="/" className={styles.NavBarItem}>Home</Link>
+        <Link to="/cart" className={styles.NavBarItem}>Shopping cart</Link>
+        <Link to='/aboutus' className={styles.NavBarItem}>About us</Link>
+        <Link to='/contact' className={styles.NavBarItem}>Contact</Link>
+      </div>
+        );
   }
 }
 
