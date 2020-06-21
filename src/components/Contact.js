@@ -29,34 +29,46 @@ class Contact extends React.Component {
 
   render(){
     return(
-      <form
-        onSubmit={this.handleSubmit}
-        className={styles.FormContainer}>
+      <div>
+        <form
+          onSubmit={this.handleSubmit}
+          className={styles.FormContainer}>
 
-        <label>Name:</label>
+          <div className={styles.FormTitle}>
+            Contact us
+          </div>
+
+          <input
+            type="username"
+            value={this.state.username}
+            onChange={this.handleChange}
+            placeholder="Name"
+            className = {styles.FormFieldSmall}
+          />
+
+          <input
+            type="email"
+            value={this.state.email}
+            onChange={this.handleChange}
+            placeholder="Email"
+            className = {styles.FormFieldSmall}
+          />
+
+          <textarea
+            type="message"
+            value={this.state.message}
+            onChange={this.handleChange}
+            placeholder="Please type your message here"
+            className={styles.FormFieldBig}
+          />
+
         <input
-          type="username"
-          value={this.state.username}
-          onChange={this.handleChange}
+          type="submit"
+          value="Submit"
+          className={styles.SubmitButton}
         />
-
-        <label>Email:</label>
-        <input
-          type="email"
-          value={this.state.email}
-          onChange={this.handleChange}
-        />
-
-        <label>Message:</label>
-        <textarea
-          type="message"
-          value={this.state.message}
-          onChange={this.handleChange}
-        />
-
-      <input type="submit" value="Submit" />
-      </form>
-
+        </form>
+      </div>
     )
 
   }
