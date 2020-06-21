@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDom from'react-dom';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-
+import Home from './Home.js'
+import Contact from './Contact.js'
 class ItemContainer extends React.Component {
 
   constructor(props) {
     super(props);
   }
-
   render() {
     switch (this.props.content) {
       case "top":
@@ -20,7 +20,9 @@ class ItemContainer extends React.Component {
   }
 
   renderCategoryView() {
-    return <div>Hello category view</div>
+    return <div>
+    <Home />
+    </div>
   }
 
   renderAboutUs() {
@@ -28,7 +30,9 @@ class ItemContainer extends React.Component {
   }
 
   renderContact() {
-    return <div>Hello contact</div>
+    return <div>
+    <Contact />
+    </div>
   }
 }
 
