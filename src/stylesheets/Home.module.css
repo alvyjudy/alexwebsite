@@ -1,0 +1,33 @@
+.CategoryContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.Category {
+  width: 400px;
+  height: 300px;
+  text-decoration: none;
+  border: 0px;
+  object-fit: cover;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  position: relative;
+}
+
+.TextInPic {
+  color: Black;
+  text-align: center;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.Image {
+  height: 100%;
+}
