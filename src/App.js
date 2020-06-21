@@ -22,9 +22,7 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
-          <NavBar />
-        </div>
+        <NavBar />
       </BrowserRouter>
     );
   }
