@@ -32,10 +32,10 @@ class NavBar extends React.Component {
   }
   render() {
     return (
-      <div>
+      <BrowserRouter>
         <NavItems />
         {this.insertRoutes()}
-      </div>
+      </BrowserRouter>
     )
   }
 }
