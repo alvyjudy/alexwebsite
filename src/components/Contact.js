@@ -29,46 +29,44 @@ class Contact extends React.Component {
 
   render(){
     return(
-      <div>
-        <form
-          onSubmit={this.handleSubmit}
-          className={styles.FormContainer}>
+      <form
+        onSubmit={this.handleSubmit}
+        className={styles.FormContainer}
+      >
 
-          <div className={styles.FormTitle}>
-            Contact us
-          </div>
-
-          <input
-            type="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-            placeholder="Name"
-            className = {styles.FormFieldSmall}
-          />
-
-          <input
-            type="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            placeholder="Email"
-            className = {styles.FormFieldSmall}
-          />
-
-          <textarea
-            type="message"
-            value={this.state.message}
-            onChange={this.handleChange}
-            placeholder="Please type your message here"
-            className={styles.FormFieldBig}
-          />
+        <div className={styles.FormTitle}>
+        </div>
 
         <input
-          type="submit"
-          value="Submit"
-          className={styles.SubmitButton}
+          type="username"
+          value={this.state.username}
+          onChange={this.handleChange}
+          placeholder="Name"
+          className = {styles.FormFieldSmall}
         />
-        </form>
-      </div>
+
+        <input
+          type="email"
+          value={this.state.email}
+          onChange={this.handleChange}
+          placeholder="Email"
+          className = {styles.FormFieldSmall}
+        />
+
+        <textarea
+          type="message"
+          value={this.state.message}
+          onChange={this.handleChange}
+          placeholder="Please type your message here"
+          className={styles.FormFieldBig}
+        />
+
+      <input
+        type="submit"
+        value="Submit"
+        className={styles.SubmitButton}
+      />
+    </form>
     )
 
   }

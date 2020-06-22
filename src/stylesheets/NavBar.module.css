@@ -1,7 +1,7 @@
 .NavBarContainer {
   composes: OverallAppearance from "./Shared.module.css";
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: flex-end;
 }
 
@@ -16,6 +16,18 @@
 .NavBarItem {
   composes: OverallAppearance from "./Shared.module.css";
   text-decoration: none;
-  margin: 20px;
+  margin: 40px;
+  font-size: 3em;
+}
 
+/* Desktop mode overide*/
+@media (min-width: 1000px) {
+  .NavBarContainer {
+    flex-flow: row ;
+    justify-content: flex-end;
+  }
+
+  .NavBarItem {
+    font-size: 2em;
+  }
 }

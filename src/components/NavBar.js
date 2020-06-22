@@ -46,8 +46,8 @@ class NavItems extends React.Component {
     return (
       <div className={styles.NavBarContainer}>
         <Link to="/" className={styles.NavBarItem}>Home</Link>
-        <Link to="/cart" className={styles.NavBarItem}>Shopping cart</Link>
-        <Link to='/aboutus' className={styles.NavBarItem}>About us</Link>
+        <Link to="/cart" className={styles.NavBarItem}>Cart</Link>
+        <Link to='/aboutus' className={styles.NavBarItem}>About</Link>
         <Link to='/contact' className={styles.NavBarItem}>Contact</Link>
       </div>
         );

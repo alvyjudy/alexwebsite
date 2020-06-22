@@ -1,33 +1,49 @@
+
+
 .CategoryContainer {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .Category {
-  width: 400px;
-  height: 300px;
   text-decoration: none;
-  border: 0px;
+  border: 0x;
   object-fit: cover;
   overflow: hidden;
-  position: relative;
+  display: grid;
   align-items: center;
-  position: relative;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  margin: 10px;
+}
+
+/*for use in desktop*/
+@media (min-width: 1000px) {
+  .CategoryContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    grid-gap: 10px 10px;
+  }
+
+  .Category {
+    margin: 0px;
+  }
 }
 
 .TextInPic {
-  color: Black;
+  color: white;
+  font-family: monospace;
+  font-size: 80px;
   text-align: center;
-  font-size: 30px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-
+  grid-area: 1/1/1/1;
+  z-index: 2;
 }
 
 .Image {
-  height: 100%;
+  width: 100%;
+  grid-area: 1/1/1/1;
+  z-index: 1
 }

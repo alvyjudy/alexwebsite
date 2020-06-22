@@ -10,7 +10,7 @@ class ItemContainer extends React.Component {
   constructor(props) {
     super(props);
   }
-  
+
   render() {
     switch (this.props.content) {
       case "top":
@@ -23,9 +23,8 @@ class ItemContainer extends React.Component {
   }
 
   renderCategoryView() {
-    return <div>
-    <Home />
-    </div>
+    return <Home />;
+
   }
 
   renderAboutUs() {

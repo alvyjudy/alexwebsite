@@ -1,38 +1,50 @@
 .FormTitle {
   font-family: sans-serif;
   text-align: center;
-  margin: 20px;
 }
 
 .FormContainer {
-  margin: 30px;
-  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: flex-start;
+}
+
+
+.TextStyle {
+  text-align: left;
+  font: 2em monospace;
 }
 
 .FormFieldSmall {
-  composes: OverallAppearance from "./Shared.module.css";
-  margin: auto;
-  width: 200px;
-  padding: 5px;
+  composes: TextStyle;
+  padding: 15px;
   border: 1px solid LightGray;
+  font-size: 4em;
+  margin: 20px 50px 20px 50px;
+  height: 100px;
+  width: 50%;
 }
 
 .FormFieldBig {
-  composes: OverallAppearance from "./Shared.module.css";
+  composes: TextStyle;
   border: 1px solid LightGray;
-  width: 200px;
-  height: 100px;
-  padding: 10px;
-  margin: auto;
+  height: 400px;
+  padding: 15px;
+  font-size: 4em;
+  margin: 20px 50px 20px 50px;
+  width: 90%;
 }
 
 .SubmitButton {
-  composes: OverallAppearance from "./Shared.module.css";
-  width: 100px;
-  margin: auto;
-  border: 1px solid lightgray;
-  background-color: white;
+  composes: TextStyle;
+  border: 1px solid gray;
+  background-color: navy;
+  color: white;
+  font-size: 60px;
+  margin: 20px 50px 20px 50px;
+  padding: 10px;
+  text-align: center;
+  width: 500px;
+  height: 200px;
 }

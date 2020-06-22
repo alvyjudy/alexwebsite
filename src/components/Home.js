@@ -23,24 +23,25 @@ class Home extends React.Component {
 
         <Link to="" className={styles.Category}>
           <p className={styles.TextInPic}>
-            Alpha
+            Beta
           </p>
           <img src={img2} className={styles.Image} />
         </Link>
 
         <Link to="" className={styles.Category}>
           <p className={styles.TextInPic}>
-            Alpha
+            Charlie
           </p>
           <img src={img3} className={styles.Image} />
         </Link>
 
         <Link to="" className={styles.Category}>
           <p className={styles.TextInPic}>
-            Alpha
+            Delta
           </p>
           <img src={img4} className={styles.Image} />
         </Link>
+
 
       </div>
     )
