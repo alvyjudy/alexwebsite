@@ -30,19 +30,8 @@ class NavBar extends React.Component {
       </React.Fragment>
     )
   }
-  render() {
-    return (
-      <BrowserRouter>
-        <NavItems />
-        {this.insertRoutes()}
-      </BrowserRouter>
-    )
-  }
-}
 
-
-class NavItems extends React.Component {
-  render() {
+  insertItems() {
     return (
       <div className={styles.NavBarContainer}>
         <Link to="/" className={styles.NavBarItem}>Home</Link>
@@ -50,8 +39,20 @@ class NavItems extends React.Component {
         <Link to='/aboutus' className={styles.NavBarItem}>About</Link>
         <Link to='/contact' className={styles.NavBarItem}>Contact</Link>
       </div>
-        );
+    )
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        {this.insertItems()}
+        {this.insertRoutes()}
+      </BrowserRouter>
+    )
   }
 }
+
+
+
 
 export default NavBar;
