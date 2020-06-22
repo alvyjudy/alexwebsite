@@ -3,6 +3,7 @@ import ReactDom from'react-dom';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import Home from './Home.js';
 import Contact from './Contact.js';
+import Item from './Item.js';
 
 
 class ItemContainer extends React.Component {
@@ -38,11 +39,7 @@ class ItemContainer extends React.Component {
   }
 }
 
-class Item extends React.Component {
-  render() {
-    return <div>Hi item</div>;
-  }
-}
+
 
 
 
