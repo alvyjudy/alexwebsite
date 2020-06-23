@@ -37,7 +37,7 @@ class Home extends React.Component {
 
         <Link to="" className={styles.Category}>
           <p className={styles.TextInPic}>
-            Delta
+            Untitled
           </p>
           <img src={img4} className={styles.Image} />
         </Link>
