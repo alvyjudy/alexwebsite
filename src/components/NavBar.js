@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDom from'react-dom';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import ItemContainer from './ItemContainer';
-import Item from './Item.js';
+import ItemContainer, { Item } from './ItemContainer';
 import Cart from './Cart';
 
 import styles from '../stylesheets/NavBar.module.css';
@@ -38,23 +37,19 @@ class NavBar extends React.Component {
 
         <Route
           exact path='/keychains'
-          component={() => <ItemContainer content='items' category='keychain' />}
+          component={() => <ItemContainer content='keychains' />}
         />
 
         <Route
-          exact path='/postcard'
-          component={() => <ItemContainer content='items' category='postcard' />}
+          exact path='/postcards'
+          component={() => <ItemContainer content='postcards' />}
         />
 
         <Route
           exact path='/maskingtape'
-          component={() => <ItemContainer content='items' category='maskingtape' />}
+          component={() => <ItemContainer content='maskingtape' />}
         />
 
-        <Route
-          exact path="/:itemId"
-          component={() => <Item content={itemId} />}
-        />
 
       </React.Fragment>
     )

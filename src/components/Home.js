@@ -14,23 +14,23 @@ class Home extends React.Component {
     return(
       <div className={styles.CategoryContainer}>
 
-        <Link to="" className={styles.Category}>
+        <Link to="/keychains" className={styles.Category}>
           <p className={styles.TextInPic}>
-            Alpha
+            Keychains
           </p>
           <img src={img1} className={styles.Image} />
         </Link>
 
-        <Link to="" className={styles.Category}>
+        <Link to="/postcards" className={styles.Category}>
           <p className={styles.TextInPic}>
-            Beta
+            postcards
           </p>
           <img src={img2} className={styles.Image} />
         </Link>
 
-        <Link to="" className={styles.Category}>
+        <Link to="/maskingtape" className={styles.Category}>
           <p className={styles.TextInPic}>
-            Charlie
+            masking tape
           </p>
           <img src={img3} className={styles.Image} />
         </Link>

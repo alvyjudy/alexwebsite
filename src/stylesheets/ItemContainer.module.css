@@ -1,0 +1,37 @@
+.ItemContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px 40px;
+  margin: 20px;
+}
+
+.ItemCard {
+  height:500px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  object-fit: cover;
+  align-items: center;
+  justify-content: space-around;
+  border: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.ItemImage {
+  padding: 10px;
+  height: 60%;
+  flex-shrink: 1;
+}
+
+.ItemTitle {
+  flex-shrink: 2;
+}
+
+.Button {
+  flex-shrink: 2;
+  border: 1px solid navy;
+  font-family: monospace;
+  color: white;
+  background-color: navy;
+  padding: 10px;
+}
