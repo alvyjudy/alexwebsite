@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --open --mode development"
+    "serve": "node serve.js",
+    "start": "webpack-dev-server --mode development"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +28,7 @@
     "file-loader": "6.0.0",
     "style-loader": "1.2.1",
     "css-loader": "3.6.0",
-    "react-router-dom": "5.2.0"
+    "react-router-dom": "5.2.0",
+    "express":"4.17.1"
   }
 }
