@@ -4,7 +4,9 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import Home from './Home.js';
 import Contact from './Contact.js';
 import styles from '../stylesheets/ItemContainer.module.css';
+import mediaIndex from '../mediaIndex.json';
 
+const HOST = "localhost:3002";
 
 class ItemContainer extends React.Component {
 
@@ -45,15 +47,14 @@ class ItemContainer extends React.Component {
   }
 
   renderPostcards() {
-    let imgList = require.context(`../images/postcards`).keys();
+    let imgList = mediaIndex.postcards;
     let allItems = imgList.map(
       (imgName, i) => {
         //next line is some webpack magic, figure it out later
-        let importedImg = require(`../images/postcards/${imgName.split('/')[1]}`).default;
         return (
           <Item
-          imgfile={importedImg}
-          title={importedImg}
+          imgfile={imgName}
+          title={imgName}
           key={i}
         />)
       }
@@ -66,15 +67,14 @@ class ItemContainer extends React.Component {
   }
 
   renderKeychains() {
-    let imgList = require.context(`../images/keychains`).keys();
+    let imgList = mediaIndex.postcards;
     let allItems = imgList.map(
       (imgName, i) => {
         //next line is some webpack magic, figure it out later
-        let importedImg = require(`../images/keychains/${imgName.split('/')[1]}`).default;
         return (
           <Item
-          imgfile={importedImg}
-          title={importedImg}
+          imgfile={imgName}
+          title={imgName}
           key={i}
         />)
       }
@@ -87,15 +87,14 @@ class ItemContainer extends React.Component {
   }
 
   renderMaskingtape() {
-    let imgList = require.context(`../images/maskingtape`).keys();
+    let imgList = mediaIndex.postcards;
     let allItems = imgList.map(
       (imgName, i) => {
         //next line is some webpack magic, figure it out later
-        let importedImg = require(`../images/maskingtape/${imgName.split('/')[1]}`).default;
         return (
           <Item
-          imgfile={importedImg}
-          title={importedImg}
+          imgfile={imgName}
+          title={imgName}
           key={i}
         />)
       }
@@ -119,7 +118,7 @@ class Item extends React.Component{
     <div className={styles.ItemCard}>
       <img
         className={styles.ItemImage}
-        src={this.props.imgfile}
+        src={`http://${HOST}/${this.props.imgfile}`}
         alt='image failed to load'
       />
       <p className={styles.ItemTitle}>Item title 4.99$</p>
