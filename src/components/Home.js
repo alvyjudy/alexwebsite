@@ -5,7 +5,7 @@ import styles from "../stylesheets/Home.module.css";
 
 
 import mediaIndex from "../mediaIndex.json";
-const HOST = "localhost:3002";
+const HOST = "192.168.0.2:3002";
 
 class Home extends React.Component {
   render(){

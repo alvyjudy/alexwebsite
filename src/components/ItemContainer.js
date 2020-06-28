@@ -6,7 +6,7 @@ import Contact from './Contact.js';
 import styles from '../stylesheets/ItemContainer.module.css';
 import mediaIndex from '../mediaIndex.json';
 
-const HOST = "localhost:3002";
+const HOST = "192.168.0.2:3002";
 
 class ItemContainer extends React.Component {
 
