@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from'react-dom';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link, useParams } from 'react-router-dom';
 import Contact from './Contact.js';
 import styles from '../stylesheets/ItemContainer.module.css';
 import mediaIndex from '../mediaIndex.json';
@@ -21,25 +21,21 @@ class ItemContainer extends React.Component {
         return this.renderAboutUs();
       case "contact":
         return this.renderContact();
-      case 'postcards':
-        return this.renderPostcards();
-      case 'keychains':
-        return this.renderKeychains();
-      case 'maskingtape':
-        return this.renderMaskingtape();
+      default:
+        return this.renderItems();
     }
   }
 
   renderCategoryView() {
     let imgList = mediaIndex.images;
     let allItems = imgList.map(
-      (imgName, i) => {
+      (imgObj, i) => {
         return (
           <Item
-            imgfile = {imgName}
-            title = {imgName}
+            imgfile = {imgObj.path}
             key={i}
             theme='category'
+            category={imgObj.name}
           />
         )
       }
@@ -63,14 +59,15 @@ class ItemContainer extends React.Component {
     </div>
   }
 
-  renderPostcards() {
-    let imgList = mediaIndex.postcards;
+  renderItems() {
+    let category = this.props.content;
+    let imgList = mediaIndex[category];
     let allItems = imgList.map(
-      (imgName, i) => {
+      (imgObj, i) => {
         return (
           <Item
-            imgfile={imgName}
-            title={imgName}
+            imgfile={imgObj.path}
+            title={imgObj.name}
             key={i}
             theme='items'
         />)
@@ -80,51 +77,10 @@ class ItemContainer extends React.Component {
       <div className={styles.ItemContainer}>
         {allItems}
       </div>
-    )
-  }
-
-  renderKeychains() {
-    let imgList = mediaIndex.postcards;
-    let allItems = imgList.map(
-      (imgName, i) => {
-        //next line is some webpack magic, figure it out later
-        return (
-          <Item
-          imgfile={imgName}
-          title={imgName}
-          key={i}
-          theme='items'
-        />)
-      }
-    )
-    return (
-      <div className={styles.ItemContainer}>
-        {allItems}
-      </div>
-    )
-  }
-
-  renderMaskingtape() {
-    let imgList = mediaIndex.postcards;
-    let allItems = imgList.map(
-      (imgName, i) => {
-        //next line is some webpack magic, figure it out later
-        return (
-          <Item
-          imgfile={imgName}
-          title={imgName}
-          key={i}
-          theme='items'
-        />)
-      }
-    )
-    return (
-      <div className={styles.ItemContainer}>
-        {allItems}
-      </div>
-    )
+    );
   }
 }
+
 
 
 class Item extends React.Component{
@@ -143,9 +99,9 @@ class Item extends React.Component{
 
   renderCategory() {
     return (
-        <Link to="/keychains" className={styles.Category}>
+        <Link to={`/items/${this.props.category}`} className={styles.Category}>
           <p className={styles.TextInPic}>
-            Keychains
+            {this.props.category}
           </p>
           <img src={`http://${HOST}/${this.props.imgfile}`} className={styles.Image} />
         </Link>

@@ -49,19 +49,10 @@ class App extends React.Component {
         />
 
         <Route
-          exact path='/keychains'
-          component={() => <ItemContainer content='keychains' />}
+          path='/items/:category'
+          component={() => <ItemContainer content= {useParams()}/>}
         />
 
-        <Route
-          exact path='/postcards'
-          component={() => <ItemContainer content='postcards' />}
-        />
-
-        <Route
-          exact path='/maskingtape'
-          component={() => <ItemContainer content='maskingtape' />}
-        />
 
       </BrowserRouter>
 
