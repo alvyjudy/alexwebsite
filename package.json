@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "serve": "node serve.js",
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack-dev-server --mode development",
+    "updateIndex": "sh ./scripts/getXML.sh && python3 ./scripts/updateIndex.py"
   },
   "author": "",
   "license": "ISC",
@@ -29,6 +30,7 @@
     "style-loader": "1.2.1",
     "css-loader": "3.6.0",
     "react-router-dom": "5.2.0",
-    "express":"4.17.1"
+    "express": "4.17.1",
+    "@google-cloud/storage": "5.1.1"
   }
 }
