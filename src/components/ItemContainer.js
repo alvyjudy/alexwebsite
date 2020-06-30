@@ -61,7 +61,6 @@ class ItemContainer extends React.Component {
   renderItems() {
     let category = this.props.content;
     let imgList = mediaIndex[category];
-    console.log(imgList);
     let allItems = imgList.map(
       (imgObj, i) => {
         return (
@@ -91,13 +90,13 @@ class Item extends React.Component{
   render() {
     switch (this.props.theme) {
       case "category":
-        return this.renderCategory();
+        return this.generateCategory();
       case "items":
-        return this.renderItems();
+        return this.generateItem();
     }
   }
 
-  renderCategory() {
+  generateCategory() {
     return (
         <Link to={`/items/${this.props.category}`} className={styles.Category}>
           <p className={styles.TextInPic}>
@@ -108,7 +107,7 @@ class Item extends React.Component{
     )
   }
 
-  renderItems() {
+  generateItem() {
     return (
       <div className={styles.ItemCard}>
         <img
