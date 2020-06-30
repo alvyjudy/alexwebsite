@@ -25,8 +25,13 @@ index['categories'] = []
 for category in categories:
     img_obj = {"name": None, 'url': None}
     category_name = category.split("/")[1].split(".")[0] #keychain
-    index['categories'].append(category_name)
     index[category_name] = []
+
+    index['categories'].append(
+        {'name': category_name,
+         'url':"/".join([HOST, 'categories', category_name + ".jpg"])
+         }
+    )
 
     for content in contents:
         if content.startswith(category_name):
