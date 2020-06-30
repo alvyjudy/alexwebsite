@@ -1,15 +1,17 @@
-# Webpack React development environment from scratch
+# Front-end code for Alex's website
 
-To start developing, first clone this repo:
+To start developing, first clone this repository
+(``git clone https://github.com/alvyjudy/alexwebsite.git``) and intialize it
+by running ``npm install`` inside the directory.
 
-```
-git clone https://github.com/alvyjudy/alexwebsite.git
-```
+There are two ways to view the website in a development setting. First, run
+``npm run devServer``. This will start a server process on localhost port
+3001 which you can view in your browser. Any code base change will also be
+updated without having to restart it. Second, run ``npm run build`` to generate
+the bundle file inside a ``dist/`` folder which could be served into a simple
+HTTP server by running ``npm run serve``.
 
-Then, inside the repository, run ``npm install`` to install all the
-required dependencies.
-
-Afterwards, you can either invoke ``npm run build`` to generate a bundled
-file inside ``dist`` folder
-
-Or invoke ``npm run start`` to see the rendered website in browser.
+Image files are hosted on a public google cloud storage bucket and the website
+requires a fileIndex obtained from there. To generate this index, run ``npm
+run updateIndex``. When starting the server in the aforementioned manner, this
+command is run automatically.
