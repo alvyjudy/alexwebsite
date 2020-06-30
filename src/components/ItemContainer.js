@@ -5,7 +5,6 @@ import Contact from './Contact.js';
 import styles from '../stylesheets/ItemContainer.module.css';
 import mediaIndex from '../mediaIndex.json';
 
-const HOST = "192.168.0.2:3002";
 
 class ItemContainer extends React.Component {
 
@@ -27,12 +26,12 @@ class ItemContainer extends React.Component {
   }
 
   renderCategoryView() {
-    let imgList = mediaIndex.images;
+    let imgList = mediaIndex.categories;
     let allItems = imgList.map(
       (imgObj, i) => {
         return (
           <Item
-            imgfile = {imgObj.path}
+            imgfile = {imgObj.url}
             key={i}
             theme='category'
             category={imgObj.name}
@@ -62,11 +61,12 @@ class ItemContainer extends React.Component {
   renderItems() {
     let category = this.props.content;
     let imgList = mediaIndex[category];
+    console.log(imgList);
     let allItems = imgList.map(
       (imgObj, i) => {
         return (
           <Item
-            imgfile={imgObj.path}
+            imgfile={imgObj.url}
             title={imgObj.name}
             key={i}
             theme='items'
@@ -103,7 +103,7 @@ class Item extends React.Component{
           <p className={styles.TextInPic}>
             {this.props.category}
           </p>
-          <img src={`http://${HOST}/${this.props.imgfile}`} className={styles.Image} />
+          <img src={this.props.imgfile} className={styles.Image} />
         </Link>
     )
   }
@@ -113,7 +113,7 @@ class Item extends React.Component{
       <div className={styles.ItemCard}>
         <img
           className={styles.ItemImage}
-          src={`http://${HOST}/${this.props.imgfile}`}
+          src={this.props.imgfile}
           alt='image failed to load'
         />
         <p className={styles.ItemTitle}>Item title 4.99$</p>

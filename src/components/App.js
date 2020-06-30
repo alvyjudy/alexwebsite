@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from'react-dom';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link, useParams } from 'react-router-dom';
 
 import styles from '../stylesheets/NavBar.module.css';
 import ItemContainer from "./ItemContainer.js";
@@ -50,7 +50,7 @@ class App extends React.Component {
 
         <Route
           path='/items/:category'
-          component={() => <ItemContainer content= {useParams()}/>}
+          component={() => <ItemContainer content= {useParams().category}/>}
         />
 
 
