@@ -5,9 +5,9 @@ import json
 from os.path import abspath, dirname, join
 
 HOST = "https://storage.googleapis.com/steeplehill"
+xml_path = join(dirname(abspath(__file__)), "xmlfile.xml")
 
-
-tree = ET.parse('xmlfile.xml')
+tree = ET.parse(xml_path)
 root = tree.getroot()
 
 contents = []
