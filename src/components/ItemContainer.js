@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDom from'react-dom';
-import { BrowserRouter, Switch, Route, Link, useParams } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Link, useParams, Redirect } from 'react-router-dom';
 import Contact from './Contact.js';
 import styles from '../stylesheets/ItemContainer.module.css';
 import mediaIndex from '../mediaIndex.json';
 
+let savedObj = ["https://storage.googleapis.com/steeplehill/keychain/keychain1.jpg"];
 
 class ItemContainer extends React.Component {
 
@@ -20,6 +21,8 @@ class ItemContainer extends React.Component {
         return this.renderAboutUs();
       case "contact":
         return this.renderContact();
+      case "cart":
+        return this.renderCart();
       default:
         return this.renderItems();
     }
@@ -73,6 +76,25 @@ class ItemContainer extends React.Component {
       }
     )
     return (
+      <div>
+        {allItems}
+      </div>
+    );
+  }
+  
+  renderCart(){
+    let imgList = savedObj;
+    console.log(savedObj)
+    let allItems = imgList.map(
+      (imgObj, i) => {
+        return (
+          <div>
+            <img onClick={() => savedObj = savedObj.filter(rm => imgObj != rm, this.forceUpdate())} className={styles.Image} src={imgObj} />
+          </div>
+        )
+      }
+    )
+    return (
       <div className={styles.ItemContainer}>
         {allItems}
       </div>
@@ -109,15 +131,17 @@ class Item extends React.Component{
 
   generateItem() {
     return (
-      <div className={styles.ItemCard}>
+      <div className={styles.ItemCard} >
         <img
           className={styles.ItemImage}
           src={this.props.imgfile}
           alt='image failed to load'
         />
         <p className={styles.ItemTitle}>Item title 4.99$</p>
-        <button className={styles.Button}>Another button</button>
-        <button className={styles.Button} type='button' >Add to cart</button>
+        <button className={styles.Button} >Another button</button>
+        <button className={styles.Button} type='button' onClick={
+          () => savedObj.push(this.props.imgfile)
+          }>Add to cart</button>
       </div>
     )
   }
