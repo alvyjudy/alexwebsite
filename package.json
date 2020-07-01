@@ -12,6 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.20",
     "react": "",
     "react-dom": ""
   },
