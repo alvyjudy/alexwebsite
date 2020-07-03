@@ -1,0 +1,9 @@
+steps:
+- name: 'python:3.7-slim'
+  args: ['python', './scripts/getFilesXML.py']
+
+- name: 'python:3.7-slim'
+  args: ['python', './scripts/updateIndex.py']
+
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['-m', 'cp', '-r', '*', 'gs://kahului_cloudbuild/built2']
