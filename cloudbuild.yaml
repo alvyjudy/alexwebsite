@@ -11,9 +11,10 @@ steps:
 - name: 'node'
   args: ['npx', 'webpack', '--mode', 'production']
 
+
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy']
-  
+
 #this upload everything
 #- name: 'gcr.io/cloud-builders/gsutil'
 #  args: ['-m', 'cp', '-r', '*', 'gs://kahului_cloudbuild/built2']
