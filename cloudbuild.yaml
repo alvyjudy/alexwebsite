@@ -5,5 +5,15 @@ steps:
 - name: 'python:3.7-slim'
   args: ['python', './scripts/updateIndex.py']
 
-- name: 'gcr.io/cloud-builders/gsutil'
-  args: ['-m', 'cp', '-r', '*', 'gs://kahului_cloudbuild/built2']
+- name: 'node'
+  args: ['npm', 'install']
+
+- name: 'node'
+  args: ['npx', 'webpack', '--mode', 'production']
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy']
+  
+#this upload everything
+#- name: 'gcr.io/cloud-builders/gsutil'
+#  args: ['-m', 'cp', '-r', '*', 'gs://kahului_cloudbuild/built2']
