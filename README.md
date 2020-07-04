@@ -15,3 +15,15 @@ Image files are hosted on a public google cloud storage bucket and the website
 requires a fileIndex obtained from there. To generate this index, run ``npm
 run updateIndex``. When starting the server in the aforementioned manner, this
 command is run automatically.
+
+
+To build locally, invoke ``npm run build``
+
+To deploy locally after the build, invoke ``npm run start``
+
+To deploy locally built files to google cloud app engine, run ``gcloud app
+deploy``
+
+To build and deploy on google cloud, invoke ``gcloud builds submit .``
+
+The above four tasks can be chained for convenience,
