@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npm run updateIndex && webpack --mode production",
-    "serve": "node serve.js",
+    "start": "node serve.js",
     "devServer": "npm run updateIndex && webpack-dev-server --mode development",
     "updateIndex": "python3 ./scripts/getFilesXML.py && python3 ./scripts/updateIndex.py"
   },
@@ -13,7 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "react": "",
-    "react-dom": ""
+    "react-dom": "",
+    "express": "4.17.1"
   },
   "devDependencies": {
     "@babel/core": "",
@@ -29,7 +30,6 @@
     "style-loader": "1.2.1",
     "css-loader": "3.6.0",
     "react-router-dom": "5.2.0",
-    "express": "4.17.1",
     "@google-cloud/storage": "5.1.1"
   }
 }
