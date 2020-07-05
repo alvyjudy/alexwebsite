@@ -1,8 +1,11 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require("mongoose");
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("dist"));
 
 app.get("/", (req, res) => {

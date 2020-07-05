@@ -24,6 +24,7 @@ class App extends React.Component {
           <Link to="/cart" className={styles.NavBarItem}>Cart</Link>
           <Link to='/aboutus' className={styles.NavBarItem}>About</Link>
           <Link to='/contact' className={styles.NavBarItem}>Contact</Link>
+          <Link to='/login' className={styles.NavBarItem}>Login</Link>
         </div>
 
         <Route
@@ -45,7 +46,7 @@ class App extends React.Component {
 
         <Route
           exact path="/cart"
-          component={() => <Cart />}
+          component={() => <ItemContainer content='cart'/>}
         />
 
         <Route
@@ -53,6 +54,10 @@ class App extends React.Component {
           component={() => <ItemContainer content= {useParams().category}/>}
         />
 
+        <Route
+          path='/login'
+          component={() => <ItemContainer content='login'/>}
+        />
 
       </BrowserRouter>
 
