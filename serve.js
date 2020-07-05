@@ -9,4 +9,12 @@ app.get("/", (req, res) => {
   res.sendFile("index.html");
 });
 
+/* to start the server
+$ export devMode='local' backEndIP=''
+$ node serve.js
+*/
+if (process.env.devMode == 'local') {
+  //redirect request to '/api/' to process.env.backEndIP
+}
+
 app.listen(process.env.PORT || 8080);
