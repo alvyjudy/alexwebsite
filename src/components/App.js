@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route, Link, useParams } from 'react-router-dom'
 
 import styles from '../stylesheets/NavBar.module.css';
 import ItemContainer from "./ItemContainer.js";
-import Cart from "./Cart.js";
 
 
 //import "./App.css";
@@ -73,24 +72,26 @@ class App extends React.Component {
           component={() => <ItemContainer content='contact'/>}
         />
 
-        <Route
-          exact path="/cart"
-          component={() => <Cart
-                              cartItems={this.state.cartItems}
-                              removeItemFromCart={this.removeItemFromCart}
-                            />
-                    }
+        <Route exact path="/cart"
+          component={() =>
+            <ItemContainer
+            content='cart'
+            cartItems={this.state.cartItems}
+            removeItemFromCart={this.removeItemFromCart}
+            />
+          }
         />
 
-        <Route
-          path='/items/:category'
-          component={
-            () =>
-              <ItemContainer
-                content= {useParams().category}
-                addItemToCart={this.addItemToCart}
-              />}
+
+        <Route path='/items/:category'
+          component={() =>
+            <ItemContainer
+              content= {useParams().category}
+              addItemToCart={this.addItemToCart}
+            />
+          }
         />
+        
 
 
       </BrowserRouter>

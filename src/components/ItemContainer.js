@@ -7,6 +7,16 @@ import mediaIndex from '../mediaIndex.json';
 
 
 class ItemContainer extends React.Component {
+  /*
+    props.imgObj
+      imgObj.url
+      imbObj.name
+      imgObj.desc
+    props.theme: 'category' | 'items' | 'cart'
+    props.dispatcher
+      dispatcher.addItemToCart
+      dispatcher.removeItemFromCart
+  */
 
   constructor(props) {
     super(props);
@@ -20,6 +30,8 @@ class ItemContainer extends React.Component {
         return this.renderAboutUs();
       case "contact":
         return this.renderContact();
+      case "cart":
+        return this.renderCart();
       default:
         return this.renderItems();
     }
@@ -30,12 +42,12 @@ class ItemContainer extends React.Component {
     let allItems = imgList.map(
       (imgObj, i) => {
         return (
-          <Item
-            imgfile = {imgObj.url}
-            key={i}
-            theme='category'
-            category={imgObj.name}
-          />
+          <Link to={`/items/${imgObj.name}`} className={styles.Category}>
+            <p className={styles.TextInPic}>
+              {imgObj.name}
+            </p>
+            <img src={imgObj.url} className={styles.Image} />
+          </Link>
         )
       }
     );
@@ -65,14 +77,21 @@ class ItemContainer extends React.Component {
     let allItems = imgList.map(
       (imgObj, i) => {
         return (
-          <Item
-            imgfile={imgObj.url}
-            title={imgObj.name}
-            key={i}
-            theme='items'
-            addItemToCart={this.props.addItemToCart}
-            imgObj={imgObj}
-        />)
+          <div className={styles.ItemCard}>
+            <img
+              className={styles.ItemImage}
+              src={imgObj.url}
+              alt='image failed to load'
+            />
+            <p className={styles.ItemTitle}>Item title 4.99$</p>
+            <button className={styles.Button}>Another button</button>
+            <button
+              className={styles.Button}
+              type='button'
+              onClick={() => {this.props.addItemToCart(imgObj)}}
+              >Add to cart</button>
+          </div>
+        )
       }
     )
     return (
@@ -81,56 +100,35 @@ class ItemContainer extends React.Component {
       </div>
     );
   }
-}
 
-
-
-class Item extends React.Component{
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    switch (this.props.theme) {
-      case "category":
-        return this.generateCategory();
-      case "items":
-        return this.generateItem();
-    }
-  }
-
-  generateCategory() {
-    return (
-        <Link to={`/items/${this.props.category}`} className={styles.Category}>
-          <p className={styles.TextInPic}>
-            {this.props.category}
-          </p>
-          <img src={this.props.imgfile} className={styles.Image} />
-        </Link>
-    )
-  }
-
-  generateItem() {
-    return (
-      <div className={styles.ItemCard}>
-        <img
-          className={styles.ItemImage}
-          src={this.props.imgfile}
-          alt='image failed to load'
-        />
-        <p className={styles.ItemTitle}>Item title 4.99$</p>
-        <button className={styles.Button}>Another button</button>
-        <button
-          className={styles.Button}
-          type='button'
-          onClick={() => {this.props.addItemToCart(this.props.imgObj)}}
-          >Add to cart</button>
+  renderCart() {
+    let itemList = this.props.cartItems;
+    let allItems = itemList.map(
+      (imgObj, i) => {
+        return (
+          <div className={styles.ItemCard}>
+            <img
+              className={styles.ItemImage}
+              src={imgObj.url}
+              alt='image failed to load'
+            />
+            <p className={styles.ItemTitle}>Item title 4.99$</p>
+            <button
+              className={styles.Button}
+              type='button'
+              onClick={() => {this.props.removeItemFromCart(imgObj)}}
+              >Remove</button>
+          </div>
+        )
+      }
+    );
+    return(
+      <div className={styles.ItemContainer}>
+        {allItems}
       </div>
-    )
+    );
   }
 }
-
 
 
 export default ItemContainer;
-export { Item };
