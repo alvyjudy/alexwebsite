@@ -22,12 +22,11 @@ class Cart extends React.Component {
               alt='image failed to load'
             />
             <p className={styles.ItemTitle}>Item title 4.99$</p>
-            <button className={styles.Button}>Another button</button>
             <button
               className={styles.Button}
               type='button'
-              onClick={() => {this.props.addItemToCart(this.props.imgObj)}}
-              >Add to cart</button>
+              onClick={() => {this.props.removeItemFromCart(imgObj)}}
+              >Remove</button>
           </div>
         )
       }

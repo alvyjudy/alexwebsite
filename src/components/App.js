@@ -22,17 +22,27 @@ class App extends React.Component {
       cartItems: []
     };
     this.addItemToCart = this.addItemToCart.bind(this);
+    this.removeItemFromCart = this.removeItemFromCart.bind(this);
   }
 
   addItemToCart(item) {
-    console.log('item', item);
-console.log('cart item before:', this.state.cartItems);
-    let newCartItems = this.state.cartItems.slice()
+    console.log('item to add', item);
+    let newCartItems = this.state.cartItems.slice();
     newCartItems.push(item);
     this.setState(
-      {cartItems: newCartItems},
-      () => {console.log('cart item after:', this.state.cartItems);}
+      {cartItems: newCartItems}
     );
+  }
+
+  removeItemFromCart(item) {
+    console.log('item to remove', item);
+    let newCartItems = this.state.cartItems.filter(
+      cartItem => {return cartItem !== item}
+    );
+    console.log('new cart', newCartItems);
+    this.setState(
+      {cartItems: newCartItems}
+    )
   }
 
 
@@ -67,6 +77,7 @@ console.log('cart item before:', this.state.cartItems);
           exact path="/cart"
           component={() => <Cart
                               cartItems={this.state.cartItems}
+                              removeItemFromCart={this.removeItemFromCart}
                             />
                     }
         />
