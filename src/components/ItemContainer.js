@@ -106,9 +106,9 @@ class ItemContainer extends React.Component {
     let allItems = itemList.map(
       (imgObj, i) => {
         return (
-          <div className={styles.ItemCard}>
+          <div className={styles.cartItem}>
             <img
-              className={styles.ItemImage}
+              className={styles.cartItemImage}
               src={imgObj.url}
               alt='image failed to load'
             />
@@ -123,7 +123,7 @@ class ItemContainer extends React.Component {
       }
     );
     return(
-      <div className={styles.ItemContainer}>
+      <div className={styles.cart}>
         {allItems}
       </div>
     );

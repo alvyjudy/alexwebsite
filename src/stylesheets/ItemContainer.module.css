@@ -86,3 +86,33 @@
   grid-area: 1/1/1/1;
   z-index: 1
 }
+
+/*shopping cart */
+.cart {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
+  margin: 20px;
+  align-items: center;
+
+}
+
+.cartItem {
+  width: 400px;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  object-fit: cover;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  overflow: hidden;
+  margin: 40px;
+}
+
+.cartItemImage {
+  padding: 10px;
+  width: 10%;
+  flex-shrink: 1;
+}
