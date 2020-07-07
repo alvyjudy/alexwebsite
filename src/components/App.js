@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, Link, useParams } from 'react-router-dom'
 
 import styles from '../stylesheets/NavBar.module.css';
 import ItemContainer from "./ItemContainer.js";
+import Cart from "./Cart.js";
 
 
 //import "./App.css";
@@ -15,6 +16,25 @@ import ItemContainer from "./ItemContainer.js";
 
 //object for UI
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cartItems: []
+    };
+    this.addItemToCart = this.addItemToCart.bind(this);
+  }
+
+  addItemToCart(item) {
+    console.log('item', item);
+console.log('cart item before:', this.state.cartItems);
+    let newCartItems = this.state.cartItems.slice()
+    newCartItems.push(item);
+    this.setState(
+      {cartItems: newCartItems},
+      () => {console.log('cart item after:', this.state.cartItems);}
+    );
+  }
+
 
   render() {
     return (
@@ -45,12 +65,20 @@ class App extends React.Component {
 
         <Route
           exact path="/cart"
-          component={() => <Cart />}
+          component={() => <Cart
+                              cartItems={this.state.cartItems}
+                            />
+                    }
         />
 
         <Route
           path='/items/:category'
-          component={() => <ItemContainer content= {useParams().category}/>}
+          component={
+            () =>
+              <ItemContainer
+                content= {useParams().category}
+                addItemToCart={this.addItemToCart}
+              />}
         />
 
 

@@ -61,6 +61,7 @@ class ItemContainer extends React.Component {
   renderItems() {
     let category = this.props.content;
     let imgList = mediaIndex[category];
+
     let allItems = imgList.map(
       (imgObj, i) => {
         return (
@@ -69,6 +70,8 @@ class ItemContainer extends React.Component {
             title={imgObj.name}
             key={i}
             theme='items'
+            addItemToCart={this.props.addItemToCart}
+            imgObj={imgObj}
         />)
       }
     )
@@ -117,7 +120,11 @@ class Item extends React.Component{
         />
         <p className={styles.ItemTitle}>Item title 4.99$</p>
         <button className={styles.Button}>Another button</button>
-        <button className={styles.Button} type='button' >Add to cart</button>
+        <button
+          className={styles.Button}
+          type='button'
+          onClick={() => {this.props.addItemToCart(this.props.imgObj)}}
+          >Add to cart</button>
       </div>
     )
   }
