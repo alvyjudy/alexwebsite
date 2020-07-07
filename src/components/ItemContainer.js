@@ -124,7 +124,13 @@ class ItemContainer extends React.Component {
     );
     return(
       <div className={styles.cart}>
-        {allItems}
+        <div className={styles.cartHeader}>
+          header for cart
+        </div>
+
+        <div className={styles.cartContainer}>
+          {allItems}
+        </div>
       </div>
     );
   }
