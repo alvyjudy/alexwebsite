@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route, Link, useParams } from 'react-router-dom'
 import Contact from './Contact.js';
 import styles from '../stylesheets/ItemContainer.module.css';
 import mediaIndex from '../mediaIndex.json';
+import itemsInfo from "../itemsInfo.json";
 
 
 class ItemContainer extends React.Component {
@@ -76,24 +77,28 @@ class ItemContainer extends React.Component {
 
     let allItems = imgList.map(
       (imgObj, i) => {
-        return (
-          <div className={styles.ItemCard}>
-            <img
-              className={styles.ItemImage}
-              src={imgObj.url}
-              alt='image failed to load'
-            />
-            <p className={styles.ItemTitle}>Item title 4.99$</p>
-            <button className={styles.Button}>Another button</button>
-            <button
-              className={styles.Button}
-              type='button'
-              onClick={() => {this.props.addItemToCart(imgObj)}}
-              >Add to cart</button>
-          </div>
-        )
+        let itemInfo = itemsInfo[imgObj.name];
+        if (itemInfo) {
+          return (
+            <div className={styles.ItemCard}>
+              <img
+                className={styles.ItemImage}
+                src={imgObj.url}
+                alt='image failed to load'
+              />
+              <p className={styles.ItemTitle}>{`${itemInfo.title} CAD$${itemInfo.price}`}</p>
+              <p className={styles.ItemTitle}>{itemInfo.description}</p>
+              <button className={styles.Button}>Another button</button>
+              <button
+                className={styles.Button}
+                type='button'
+                onClick={() => {this.props.addItemToCart(imgObj)}}
+                >Add to cart</button>
+            </div>
+        );
       }
-    )
+    }
+    );
     return (
       <div className={styles.ItemContainer}>
         {allItems}
