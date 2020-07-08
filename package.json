@@ -7,7 +7,7 @@
     "build": "npm run updateIndex && webpack --mode production",
     "start": "node serve.js",
     "devServer": "npm run updateIndex && webpack-dev-server --mode development",
-    "updateIndex": "python3 ./scripts/getFilesXML.py && python3 ./scripts/updateIndex.py"
+    "updateIndex": "python3 ./scripts/getFilesXML.py && python3 ./scripts/updateIndex.py && python3 ./scripts/getItemInfoCSV.py && python3 ./scripts/csvToJson.py"
   },
   "author": "",
   "license": "ISC",

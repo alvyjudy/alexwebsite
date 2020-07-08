@@ -5,6 +5,12 @@ steps:
 - name: 'python:3.7-slim'
   args: ['python', './scripts/updateIndex.py']
 
+- name: 'python:3.7-slim'
+  args: ['python', './scripts/getItemInfoCSV.py']
+
+- name: 'python:3.7-slim'
+  args: ['python', './scripts/csvToJson.py']
+
 - name: 'node'
   args: ['npm', 'install']
 
