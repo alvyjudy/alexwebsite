@@ -6,18 +6,22 @@ import styles from '../stylesheets/ItemContainer.module.css';
 import mediaIndex from '../mediaIndex.json';
 import itemsInfo from "../itemsInfo.json";
 
+import itemsMeta from "itemsMeta.json";
+/*
+itemsMeta
+{
+  "postcard1":{
+    "title":"",
+    "category":"",
+    "description":"",
+    "price":Float
+  },
+  ...
+}
+*/
+
 
 class ItemContainer extends React.Component {
-  /*
-    props.imgObj
-      imgObj.url
-      imbObj.name
-      imgObj.desc
-    props.theme: 'category' | 'items' | 'cart'
-    props.dispatcher
-      dispatcher.addItemToCart
-      dispatcher.removeItemFromCart
-  */
 
   constructor(props) {
     super(props);
@@ -73,28 +77,36 @@ class ItemContainer extends React.Component {
 
   renderItems() {
     let category = this.props.content;
-    let imgList = mediaIndex[category];
+    let allItemsKeys = itemsMeta.keys();
+    let items = allItemsKeys.map(key => {
+      if (itemsMeta[key]["category"] === category) {
+        return itemsMeta[key];
+      }
+    });
 
-    let allItems = imgList.map(
-      (imgObj, i) => {
+    let allItems = items.map(
+      (item, i) => {
         let itemInfo = itemsInfo[imgObj.name];
-        if (itemInfo) {
-          return (
-            <div className={styles.ItemCard}>
-              <img
-                className={styles.ItemImage}
-                src={imgObj.url}
-                alt='image failed to load'
-              />
-              <p className={styles.ItemTitle}>{`${itemInfo.title} CAD$${itemInfo.price}`}</p>
-              <p className={styles.ItemTitle}>{itemInfo.description}</p>
-              <button className={styles.Button}>Another button</button>
-              <button
-                className={styles.Button}
-                type='button'
-                onClick={() => {this.props.addItemToCart(imgObj)}}
-                >Add to cart</button>
-            </div>
+        return (
+          <div className={styles.ItemCard}>
+            <img
+              className={styles.ItemImage}
+              src={item.url}
+              alt='image failed to load'
+            />
+            <p className={styles.ItemTitle}>{`${item.title} CAD$${itemInfo.price}`}</p>
+            <button
+              className={styles.Button}
+              onClick={()=>{this.renderItem(item)}}>
+              Another button
+            </button>
+            <button
+              className={styles.Button}
+              type='button'
+              onClick={() => {this.props.addItemToCart(item)}}>
+              Add to cart
+            </button>
+          </div>
         );
       }
     }
@@ -104,6 +116,10 @@ class ItemContainer extends React.Component {
         {allItems}
       </div>
     );
+  }
+
+  renderItem(item) {
+    
   }
 
   renderCart() {

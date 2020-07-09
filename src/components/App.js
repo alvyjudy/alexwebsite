@@ -6,12 +6,8 @@ import styles from '../stylesheets/NavBar.module.css';
 import ItemContainer from "./ItemContainer.js";
 
 
-//import "./App.css";
-//import ItemView from './components/InsertItems.js';
 
 
-//object for managing application state
-//to do...
 
 //object for UI
 class App extends React.Component {
@@ -91,7 +87,7 @@ class App extends React.Component {
             />
           }
         />
-        
+
 
 
       </BrowserRouter>
