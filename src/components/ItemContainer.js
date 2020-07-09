@@ -135,7 +135,9 @@ class ItemContainer extends React.Component {
               src={item.url}
               alt='image failed to load'
             />
-            <p className={styles.ItemTitle}>Item title 4.99$</p>
+            <p className={styles.ItemTitle}>
+              {`${item.title} Price: CAD$${item.price}`}
+            </p>
             <button
               className={styles.Button}
               type='button'
@@ -147,16 +149,29 @@ class ItemContainer extends React.Component {
     );
     return(
       <div className={styles.cart}>
+
         <div className={styles.cartHeader}>
-          {`You have ${cart.cartItems.length} items in your cart`}
+
+          <div className={styles.cartSum}>
+            {`You have ${cart.cartItems.length} items in your cart`}
+          </div>
+
+          <div className={styles.cartSum}>
+            {`Subtotal: CAD$${subtotal}`}
+          </div>
+
+          <button
+            className={styles.Button}
+            >
+            Proceed to checkout
+          </button>
         </div>
-        <div className={styles.cartHeader}>
-          {`Subtotal: CAD$${subtotal}`}
-        </div>
+
 
         <div className={styles.cartContainer}>
           {allItems}
         </div>
+
       </div>
     );
   }

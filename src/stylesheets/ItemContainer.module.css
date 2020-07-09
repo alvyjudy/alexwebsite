@@ -116,3 +116,14 @@
   width: 10%;
   flex-shrink: 1;
 }
+
+.cartHeader {
+  display: flex;
+  border-bottom: 2px, solid, black;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cartSum {
+  font-family: monospace;
+}
