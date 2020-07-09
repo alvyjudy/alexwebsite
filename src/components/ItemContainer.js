@@ -76,16 +76,14 @@ class ItemContainer extends React.Component {
 
   renderItems() {
     let category = this.props.content;
-    let allItemsKeys = itemsMeta.keys();
-    let items = allItemsKeys.map(key => {
-      if (itemsMeta[key]["category"] === category) {
-        return itemsMeta[key];
+    let items = [];
+    itemsMeta.forEach(item => {
+      if (item['category'] === category) {
+        items.push(item);
       }
     });
-
     let allItems = items.map(
       (item, i) => {
-        let itemInfo = itemsInfo[imgObj.name];
         return (
           <div className={styles.ItemCard}>
             <img
@@ -93,7 +91,7 @@ class ItemContainer extends React.Component {
               src={item.url}
               alt='image failed to load'
             />
-            <p className={styles.ItemTitle}>{`${item.title} CAD$${itemInfo.price}`}</p>
+            <p className={styles.ItemTitle}>{`${item.title} CAD$${item.price}`}</p>
             <button
               className={styles.Button}
               onClick={()=>{this.renderItem(item)}}>
@@ -123,6 +121,11 @@ class ItemContainer extends React.Component {
   renderCart() { //this.props.cart is the App state
     let cart = this.props.cart;
     let itemList = cart.cartItems;
+    let subtotal = 0;
+    itemList.forEach((item, i) => {
+      subtotal += item.price;
+    });
+    console.log('cart total', subtotal);
     let allItems = itemList.map(
       (item, i) => {
         return (
@@ -148,7 +151,7 @@ class ItemContainer extends React.Component {
           {`You have ${cart.cartItems.length} items in your cart`}
         </div>
         <div className={styles.cartHeader}>
-          {`Subtotal: ${cart.subtotal}`}
+          {`Subtotal: CAD$${subtotal}`}
         </div>
 
         <div className={styles.cartContainer}>

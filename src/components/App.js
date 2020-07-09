@@ -33,25 +33,20 @@ class App extends React.Component {
   }
 
   addItemToCart(item) {
-    console.log('item to add', item);
     let newCartItems = this.state.cartItems.slice();
     newCartItems.push(item);
     this.setState(
-      {cartItems: newCartItems,
-      totalAmt: this.state.subtotal + item.price}
+      {cartItems: newCartItems}
     );
   }
 
   removeItemFromCart(item) {
-    console.log('item to remove', item);
     let newCartItems = this.state.cartItems.filter(
       cartItem => {return cartItem !== item}
     );
-    console.log('new cart', newCartItems);
     this.setState(
       {
         cartItems: newCartItems,
-        totalAmt: this.state.subtotal - item.price
       }
     )
   }
