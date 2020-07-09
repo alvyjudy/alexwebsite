@@ -1,5 +1,5 @@
 package-lock.json
 node_modules
 dist/*
-scripts/xmlfile.xml
-src/mediaIndex.json
+src/itemsInfo.json
+scripts/itemsInfo.xlsx
