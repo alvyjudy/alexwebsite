@@ -33,6 +33,7 @@ from os.path import abspath, dirname, join
 
 csvFile = join(dirname(abspath(__file__)), "itemsInfo.csv")
 jsonFile = join(dirname(dirname(abspath(__file__))), "src/itemsinfo.json")
+URL_base = "https://storage.googleapis.com/steeplehill"
 
 index = {}
 
@@ -41,16 +42,20 @@ with open(csvFile, 'rt') as csv:
     line = csv.readline()
     while line != "":
         line = line.split("\n")[0] #get ride of \n
-        filename, title, price, description = line.split(",")
-        filename = filename.strip().split(".")[0]
+        filename, category, title, price, description = line.split(",")
+        filename = filename.strip()
         title = title.strip()
         price = float(price.strip())
         description = description.strip()
+        category = category.strip()
+        url = "/".join([URL_base, category, filename])
 
         itemInfo = {
             "title":title,
             "price":price,
-            "description":description
+            "description":description,
+            "category":category,
+            'url':url
         }
 
         index[filename] = itemInfo
