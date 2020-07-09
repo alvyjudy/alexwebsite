@@ -1,14 +1,5 @@
 steps:
 - name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
-  args: ['python', './scripts/getFilesXML.py']
-
-- name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
-  args: ['python', './scripts/updateIndex.py']
-
-- name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
-  args: ['python', './scripts/getItemInfoCSV.py']
-
-- name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
   args: ['python', './scripts/csvToJson.py']
 
 - name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
