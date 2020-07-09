@@ -1,22 +1,21 @@
 steps:
-- name: 'python:3.7-slim'
+- name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
   args: ['python', './scripts/getFilesXML.py']
 
-- name: 'python:3.7-slim'
+- name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
   args: ['python', './scripts/updateIndex.py']
 
-- name: 'python:3.7-slim'
+- name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
   args: ['python', './scripts/getItemInfoCSV.py']
 
-- name: 'python:3.7-slim'
+- name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
   args: ['python', './scripts/csvToJson.py']
 
-- name: 'node'
+- name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
   args: ['npm', 'install']
 
-- name: 'node'
+- name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
   args: ['npx', 'webpack', '--mode', 'production']
-
 
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy']
