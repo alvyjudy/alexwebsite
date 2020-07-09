@@ -3,21 +3,20 @@ import ReactDom from'react-dom';
 import { BrowserRouter, Switch, Route, Link, useParams } from 'react-router-dom';
 import Contact from './Contact.js';
 import styles from '../stylesheets/ItemContainer.module.css';
-import mediaIndex from '../mediaIndex.json';
-import itemsInfo from "../itemsInfo.json";
-
+import mediaIndex from "mediaIndex.json";
 import itemsMeta from "itemsMeta.json";
 /*
 itemsMeta
-{
-  "postcard1":{
+[
+  {
+    "filename":"",
     "title":"",
     "category":"",
     "description":"",
     "price":Float
   },
   ...
-}
+]
 */
 
 
@@ -119,25 +118,26 @@ class ItemContainer extends React.Component {
   }
 
   renderItem(item) {
-    
+
   }
 
-  renderCart() {
-    let itemList = this.props.cartItems;
+  renderCart() { //this.props.cart is the App state
+    let cart = this.props.cart;
+    let itemList = cart.cartItems;
     let allItems = itemList.map(
-      (imgObj, i) => {
+      (item, i) => {
         return (
           <div className={styles.cartItem}>
             <img
               className={styles.cartItemImage}
-              src={imgObj.url}
+              src={item.url}
               alt='image failed to load'
             />
             <p className={styles.ItemTitle}>Item title 4.99$</p>
             <button
               className={styles.Button}
               type='button'
-              onClick={() => {this.props.removeItemFromCart(imgObj)}}
+              onClick={() => {this.props.removeItemFromCart(item)}}
               >Remove</button>
           </div>
         )
@@ -146,7 +146,8 @@ class ItemContainer extends React.Component {
     return(
       <div className={styles.cart}>
         <div className={styles.cartHeader}>
-          header for cart
+          {`You have ${cart.cartItems.length} items in your cart`}<br>
+          {`Subtotal: ${cart.subtotal}`}
         </div>
 
         <div className={styles.cartContainer}>

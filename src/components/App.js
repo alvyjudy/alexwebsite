@@ -5,8 +5,19 @@ import { BrowserRouter, Switch, Route, Link, useParams } from 'react-router-dom'
 import styles from '../stylesheets/NavBar.module.css';
 import ItemContainer from "./ItemContainer.js";
 
-
-
+/*
+itemsMeta
+[
+  {
+    "filename":"",
+    "title":"",
+    "category":"",
+    "description":"",
+    "price":Float
+  },
+  ...
+]
+*/
 
 
 //object for UI
@@ -14,7 +25,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cartItems: []
+      cartItems: [],
+      subtotal: 0.00
     };
     this.addItemToCart = this.addItemToCart.bind(this);
     this.removeItemFromCart = this.removeItemFromCart.bind(this);
@@ -25,7 +37,8 @@ class App extends React.Component {
     let newCartItems = this.state.cartItems.slice();
     newCartItems.push(item);
     this.setState(
-      {cartItems: newCartItems}
+      {cartItems: newCartItems,
+      totalAmt: this.state.subtotal + item.price}
     );
   }
 
@@ -36,7 +49,10 @@ class App extends React.Component {
     );
     console.log('new cart', newCartItems);
     this.setState(
-      {cartItems: newCartItems}
+      {
+        cartItems: newCartItems,
+        totalAmt: this.state.subtotal - item.price
+      }
     )
   }
 
@@ -72,7 +88,7 @@ class App extends React.Component {
           component={() =>
             <ItemContainer
             content='cart'
-            cartItems={this.state.cartItems}
+            cart={this.state}
             removeItemFromCart={this.removeItemFromCart}
             />
           }
