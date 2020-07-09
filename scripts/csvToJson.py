@@ -37,7 +37,10 @@ with open(csvFile, 'rt') as csv:
         filename, category, title, price, description, *details = line.split(",")
         filename = filename.strip()
         title = title.strip()
-        price = float(price.strip())
+        try:
+            price = float(price.strip())
+        except ValueError:
+            pass
         description = description.strip()
         category = category.strip()
         url = "/".join([URL_base, category, filename])

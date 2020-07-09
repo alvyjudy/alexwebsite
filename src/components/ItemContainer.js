@@ -28,7 +28,7 @@ class ItemContainer extends React.Component {
 
   render() {
     switch (this.props.content) {
-      case "top":
+      case "category":
         return this.renderCategoryView();
       case "aboutus":
         return this.renderAboutUs();
@@ -42,15 +42,21 @@ class ItemContainer extends React.Component {
   }
 
   renderCategoryView() {
-    let imgList = mediaIndex.categories;
-    let allItems = imgList.map(
-      (imgObj, i) => {
+    let category = this.props.content;
+    let items = [];
+    itemsMeta.forEach(item => {
+      if (item['category'] === category) {
+        items.push(item);
+      }
+    });
+    let allItems = items.map(
+      (item, i) => {
         return (
-          <Link to={`/items/${imgObj.name}`} className={styles.Category}>
+          <Link to={`/items/${item.title}`} className={styles.Category}>
             <p className={styles.TextInPic}>
-              {imgObj.name}
+              {item.title}
             </p>
-            <img src={imgObj.url} className={styles.Image} />
+            <img src={item.url} className={styles.Image} />
           </Link>
         )
       }
