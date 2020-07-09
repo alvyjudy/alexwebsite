@@ -28,7 +28,7 @@ class ItemContainer extends React.Component {
 
   render() {
     switch (this.props.content) {
-      case "category":
+      case "categories":
         return this.renderCategoryView();
       case "aboutus":
         return this.renderAboutUs();

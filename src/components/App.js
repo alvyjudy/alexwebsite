@@ -64,7 +64,7 @@ class App extends React.Component {
 
         <Route
           exact path="/"
-          component={() => <ItemContainer content='category'/>}
+          component={() => <ItemContainer content='categories'/>}
         />
 
 
