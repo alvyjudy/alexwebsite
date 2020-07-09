@@ -3,8 +3,8 @@ import ReactDom from'react-dom';
 import { BrowserRouter, Switch, Route, Link, useParams } from 'react-router-dom';
 import Contact from './Contact.js';
 import styles from '../stylesheets/ItemContainer.module.css';
-import mediaIndex from "mediaIndex.json";
-import itemsMeta from "itemsMeta.json";
+import mediaIndex from "../mediaIndex.json";
+import itemsMeta from "../itemsInfo.json";
 /*
 itemsMeta
 [
@@ -108,7 +108,6 @@ class ItemContainer extends React.Component {
           </div>
         );
       }
-    }
     );
     return (
       <div className={styles.ItemContainer}>
@@ -146,7 +145,9 @@ class ItemContainer extends React.Component {
     return(
       <div className={styles.cart}>
         <div className={styles.cartHeader}>
-          {`You have ${cart.cartItems.length} items in your cart`}<br>
+          {`You have ${cart.cartItems.length} items in your cart`}
+        </div>
+        <div className={styles.cartHeader}>
           {`Subtotal: ${cart.subtotal}`}
         </div>
 

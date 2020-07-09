@@ -2,27 +2,19 @@
 Convert csv to json
 Example csv:
 filename, title, price, description
-postcard1, ashe, 9.99, first postcard
-postcard2, morgana, 3.49, second postcard
-postcard3, miss fortune, 4.29, third postcard
+postcard1, first, 9.99, first postcard
+postcard2, second, 3.49, second postcard
+postcard3, third, 4.29, third postcard
 
 output:
-{
-    "postcard1":
-        {"title": "ashe",
-        "price": 9.99,
-        "description": "first postcard"
-        },
-    "postcard2":
-        {"title": "morgana",
-        "price": 3.49, "description":
-        "second postcard"
-        },
-    "postcard3":
-        {"title": "miss fortune",
-        "price": 4.29,
-        "description": "third postcard"}
-}
+[
+    {"filename":"postcard1":
+    "title": "first",
+    "price": 9.99,
+    "description": "first postcard"
+    },
+    ...
+]
 
 """
 
@@ -42,8 +34,9 @@ with open(csvFile, 'rt') as csv:
     line = csv.readline()
     while line != "":
         line = line.split("\n")[0] #get ride of \n
-        filename, category, title, price, description = line.split(",")
+        filename, category, title, price, description, *details = line.split(",")
         filename = filename.strip()
+        print(filename)
         title = title.strip()
         price = float(price.strip())
         description = description.strip()
