@@ -27,7 +27,7 @@ csvFile = join(dirname(abspath(__file__)), "itemsInfo.csv")
 jsonFile = join(dirname(dirname(abspath(__file__))), "src/itemsinfo.json")
 URL_base = "https://storage.googleapis.com/steeplehill"
 
-index = {}
+index = []
 
 with open(csvFile, 'rt') as csv:
     firstline = csv.readline()
@@ -36,7 +36,6 @@ with open(csvFile, 'rt') as csv:
         line = line.split("\n")[0] #get ride of \n
         filename, category, title, price, description, *details = line.split(",")
         filename = filename.strip()
-        print(filename)
         title = title.strip()
         price = float(price.strip())
         description = description.strip()
@@ -51,7 +50,7 @@ with open(csvFile, 'rt') as csv:
             'url':url
         }
 
-        index[filename] = itemInfo
+        index.append(itemInfo)
 
         line = csv.readline()
 
