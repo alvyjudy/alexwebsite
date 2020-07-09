@@ -26,7 +26,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       cartItems: [],
-      subtotal: 0.00
+      subtotal: 0.00,
+      count:0
     };
     this.addItemToCart = this.addItemToCart.bind(this);
     this.removeItemFromCart = this.removeItemFromCart.bind(this);
@@ -34,15 +35,18 @@ class App extends React.Component {
 
   addItemToCart(item) {
     let newCartItems = this.state.cartItems.slice();
-    newCartItems.push(item);
+    let newItem = { ...item};
+    newItem.id = this.state.count + 1;
+    newCartItems.push(newItem);
     this.setState(
-      {cartItems: newCartItems}
+      {cartItems: newCartItems,
+      count: newItem.id}
     );
   }
 
   removeItemFromCart(item) {
     let newCartItems = this.state.cartItems.filter(
-      cartItem => {return cartItem !== item}
+      cartItem => {return cartItem.id !== item.id}
     );
     this.setState(
       {

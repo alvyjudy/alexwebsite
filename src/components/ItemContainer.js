@@ -130,24 +130,27 @@ class ItemContainer extends React.Component {
     itemList.forEach((item, i) => {
       subtotal += item.price;
     });
-    console.log('cart total', subtotal);
     let allItems = itemList.map(
       (item, i) => {
         return (
           <div className={styles.cartItem}>
+
             <img
               className={styles.cartItemImage}
               src={item.url}
               alt='image failed to load'
             />
+
             <p className={styles.ItemTitle}>
               {`${item.title} Price: CAD$${item.price}`}
             </p>
+
             <button
               className={styles.Button}
               type='button'
               onClick={() => {this.props.removeItemFromCart(item)}}
               >Remove</button>
+
           </div>
         )
       }
