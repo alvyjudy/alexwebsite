@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDom from'react-dom';
 import { BrowserRouter, Switch, Route, Link, useParams } from 'react-router-dom';
 import Contact from './Contact.js';
-import styles from '../stylesheets/ItemContainer.module.css';
-import mediaIndex from "../mediaIndex.json";
+import styles from '../stylesheets/ItemContainer.module.css'
 import itemsMeta from "../itemsInfo.json";
 /*
 itemsMeta
