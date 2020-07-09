@@ -24,7 +24,7 @@ import json
 from os.path import abspath, dirname, join
 
 csvFile = join(dirname(abspath(__file__)), "itemsInfo.csv")
-jsonFile = join(dirname(dirname(abspath(__file__))), "src/itemsinfo.json")
+jsonFile = join(dirname(dirname(abspath(__file__))), "src/itemsInfo.json")
 URL_base = "https://storage.googleapis.com/steeplehill"
 
 index = []
