@@ -27,26 +27,34 @@ class App extends React.Component {
     this.state = {
       cartItems: [],
       subtotal: 0.00,
-      count:0
+      _count:0
     };
     this.addItemToCart = this.addItemToCart.bind(this);
     this.removeItemFromCart = this.removeItemFromCart.bind(this);
+    this.adjustItemCount = this.adjustItemCount.bind(this);
   }
 
   addItemToCart(item) {
     let newCartItems = this.state.cartItems.slice();
-    let newItem = { ...item};
-    newItem.id = this.state.count + 1;
-    newCartItems.push(newItem);
-    this.setState(
-      {cartItems: newCartItems,
-      count: newItem.id}
-    );
+    if (newCartItems.includes(item)){
+      console.log('included');
+      item.count ++;
+      this.setState({});
+    } else {
+      console.log('not included');
+      item.count = 1;
+      newCartItems.push(item);
+      this.setState(
+        {cartItems: newCartItems,}
+      );
+    }
+
+
   }
 
   removeItemFromCart(item) {
     let newCartItems = this.state.cartItems.filter(
-      cartItem => {return cartItem.id !== item.id}
+      cartItem => {return cartItem !== item}
     );
     this.setState(
       {
@@ -54,6 +62,20 @@ class App extends React.Component {
       }
     )
   }
+
+  adjustItemCount(item, operation) {
+    if (operation === "add") {
+      item.count ++;
+    }
+
+    if (operation === "minus") {
+      if (item.count !==1) {item.count --;}
+    }
+    
+    this.setState({});
+  }
+
+
 
 
   render() {
@@ -89,6 +111,7 @@ class App extends React.Component {
             content='cart'
             cart={this.state}
             removeItemFromCart={this.removeItemFromCart}
+            adjustItemCount={this.adjustItemCount}
             />
           }
         />

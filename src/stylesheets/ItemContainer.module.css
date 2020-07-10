@@ -99,8 +99,8 @@
 }
 
 .cartItem {
-  width: 400px;
-  height: 80px;
+  width: 700px;
+  height: 120px;
   display: flex;
   flex-direction: row;
   object-fit: cover;

@@ -128,7 +128,7 @@ class ItemContainer extends React.Component {
     let itemList = cart.cartItems;
     let subtotal = 0;
     itemList.forEach((item, i) => {
-      subtotal += item.price;
+      subtotal += item.price * item.count;
     });
     let allItems = itemList.map(
       (item, i) => {
@@ -145,11 +145,26 @@ class ItemContainer extends React.Component {
               {`${item.title} Price: CAD$${item.price}`}
             </p>
 
+            <p>{`number added: ${item.count}`}</p>
+
             <button
               className={styles.Button}
               type='button'
               onClick={() => {this.props.removeItemFromCart(item)}}
               >Remove</button>
+
+              <button
+                className={styles.Button}
+                type='button'
+                onClick={() => {this.props.adjustItemCount(item, "add")}}
+                >add 1</button>
+
+                <button
+                  className={styles.Button}
+                  type='button'
+                  onClick={() => {this.props.adjustItemCount(item, "minus")}}
+                  >minus 1</button>
+
 
           </div>
         )
