@@ -36,6 +36,15 @@
   padding: 10px;
 }
 
+.ButtonClicked {
+  flex-shrink: 2;
+  border: 1px solid navy;
+  font-family: monospace;
+  color: white;
+  background-color: black;
+  padding: 10px;
+}
+
 
 
 

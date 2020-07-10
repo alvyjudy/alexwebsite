@@ -32,16 +32,16 @@ class App extends React.Component {
     this.addItemToCart = this.addItemToCart.bind(this);
     this.removeItemFromCart = this.removeItemFromCart.bind(this);
     this.adjustItemCount = this.adjustItemCount.bind(this);
+
   }
 
   addItemToCart(item) {
     let newCartItems = this.state.cartItems.slice();
+    item.inCart = true;
     if (newCartItems.includes(item)){
-      console.log('included');
       item.count ++;
       this.setState({});
     } else {
-      console.log('not included');
       item.count = 1;
       newCartItems.push(item);
       this.setState(
@@ -53,6 +53,7 @@ class App extends React.Component {
   }
 
   removeItemFromCart(item) {
+    item.inCart = false;
     let newCartItems = this.state.cartItems.filter(
       cartItem => {return cartItem !== item}
     );
@@ -71,7 +72,7 @@ class App extends React.Component {
     if (operation === "minus") {
       if (item.count !==1) {item.count --;}
     }
-    
+
     this.setState({});
   }
 
@@ -121,6 +122,7 @@ class App extends React.Component {
           component={() =>
             <ItemContainer
               content= {useParams().category}
+              cart={this.state}
               addItemToCart={this.addItemToCart}
             />
           }

@@ -87,8 +87,24 @@ class ItemContainer extends React.Component {
         items.push(item);
       }
     });
+
     let allItems = items.map(
       (item, i) => {
+        let addToCartButton;
+        if (item.inCart) {
+          addToCartButton = <div
+                            className={styles.ButtonClicked}
+                            type='button'>
+                            Added to cart
+                            </div>
+        } else {
+          addToCartButton = <button
+                            className={styles.Button}
+                            type='button'
+                            onClick={() => {this.props.addItemToCart(item)}}>
+                            Add to cart
+                            </button>
+        }
         return (
           <div className={styles.ItemCard}>
             <img
@@ -100,14 +116,9 @@ class ItemContainer extends React.Component {
             <button
               className={styles.Button}
               onClick={()=>{this.renderItem(item)}}>
-              Another button
+              View details
             </button>
-            <button
-              className={styles.Button}
-              type='button'
-              onClick={() => {this.props.addItemToCart(item)}}>
-              Add to cart
-            </button>
+            {addToCartButton}
           </div>
         );
       }
