@@ -46,6 +46,7 @@ with open(csvFile, 'rt') as csv:
         url = "/".join([URL_base, filename])
 
         itemInfo = {
+            "filename":filename,
             "title":title,
             "price":price,
             "description":description,
