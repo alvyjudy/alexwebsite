@@ -25,6 +25,9 @@
 
 .ItemTitle {
   flex-shrink: 2;
+  text-decoration: none;
+  color: black;
+  font-family: monospace;
 }
 
 .Button {
@@ -135,4 +138,8 @@
 
 .cartSum {
   font-family: monospace;
+}
+
+.GenericLink {
+
 }
