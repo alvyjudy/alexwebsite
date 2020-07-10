@@ -43,7 +43,7 @@ with open(csvFile, 'rt') as csv:
             pass
         description = description.strip()
         category = category.strip()
-        url = "/".join([URL_base, category, filename])
+        url = "/".join([URL_base, filename])
 
         itemInfo = {
             "title":title,
