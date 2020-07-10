@@ -91,24 +91,27 @@ class App extends React.Component {
 
         <Route
           exact path="/"
-          component={() => <ItemContainer content='categories'/>}
+          component={() => <ItemContainer
+            dest='categories'
+            content='categories'/>}
         />
 
 
         <Route
           exact path="/aboutus"
-          component={() => <ItemContainer content='aboutus'/>}
+          component={() => <ItemContainer dest='aboutus'/>}
        />
 
 
         <Route
           exact path='/contact'
-          component={() => <ItemContainer content='contact'/>}
+          component={() => <ItemContainer dest='contact'/>}
         />
 
         <Route exact path="/cart"
           component={() =>
             <ItemContainer
+            dest='cart'
             content='cart'
             cart={this.state}
             removeItemFromCart={this.removeItemFromCart}
@@ -121,6 +124,7 @@ class App extends React.Component {
         <Route path='/items/:category'
           component={() =>
             <ItemContainer
+              dest='items'
               content= {useParams().category}
               cart={this.state}
               addItemToCart={this.addItemToCart}
@@ -128,6 +132,16 @@ class App extends React.Component {
           }
         />
 
+        <Route path='/item/:filename'
+          component={() =>
+            <ItemContainer
+              dest='item'
+              content= {useParams().filename}
+              cart={this.state}
+              addItemToCart={this.addItemToCart}
+            />
+          }
+        />
 
 
       </BrowserRouter>

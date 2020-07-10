@@ -26,18 +26,32 @@ class ItemContainer extends React.Component {
   }
 
   render() {
-    switch (this.props.content) {
+    switch (this.props.dest) {
       case "categories":
         return this.renderCategoryView();
+
       case "aboutus":
-        return this.renderAboutUs();
+        return this.renderAboutus();
+
+
       case "contact":
         return this.renderContact();
+
+
       case "cart":
         return this.renderCart();
-      default:
+
+
+      case "items":
         return this.renderItems();
+
+
+      case "item":
+        return this.renderItem();
+
     }
+
+
   }
 
   renderCategoryView() {
@@ -69,7 +83,7 @@ class ItemContainer extends React.Component {
 
   }
 
-  renderAboutUs() {
+  renderAboutus() {
     return <div>Hello about us</div>
   }
 
@@ -112,12 +126,13 @@ class ItemContainer extends React.Component {
               src={item.url}
               alt='image failed to load'
             />
-            <p className={styles.ItemTitle}>{`${item.title} CAD$${item.price}`}</p>
-            <button
-              className={styles.Button}
-              onClick={()=>{this.renderItem(item)}}>
-              View details
-            </button>
+            <Link
+              to={`/item/${item.filename}`}
+              className={styles.ItemTitle}
+              >
+                {`${item.title} CAD$${item.price}`}
+            </Link>
+
             {addToCartButton}
           </div>
         );
@@ -130,12 +145,54 @@ class ItemContainer extends React.Component {
     );
   }
 
-  renderItem(item) {
+  renderItem() {
+    let itemName = this.props.content;
+    let item;
+    itemsMeta.forEach(singleItem => {
+      if (singleItem.filename === itemName) {
+        item = singleItem;
+      }
+    });
+    let addToCartButton;
+    if (item.inCart) {
+      addToCartButton = <div
+                        className={styles.ButtonClicked}
+                        type='button'>
+                        Added to cart
+                        </div>
+    } else {
+      addToCartButton = <button
+                        className={styles.Button}
+                        type='button'
+                        onClick={() => {this.props.addItemToCart(item)}}>
+                        Add to cart
+                        </button>
+    }
+    return (
+      <div className={styles.ItemCard}>
+        <img
+          className={styles.ItemImage}
+          src={item.url}
+          alt='image failed to load'
+        />
+        <p className={styles.ItemTitle} >
+            {`${item.title}`}
+        </p>
+        <p className={styles.ItemTitle}>
+          {`${item.price} CAD$`}
+        </p>
+        <p className={styles.ItemTitle}>
+          {`${item.description}`}
+        </p>
 
+        {addToCartButton}
+      </div>
+    )
   }
 
   renderCart() { //this.props.cart is the App state
     let cart = this.props.cart;
+    console.log(this.props);
     let itemList = cart.cartItems;
     let subtotal = 0;
     itemList.forEach((item, i) => {
