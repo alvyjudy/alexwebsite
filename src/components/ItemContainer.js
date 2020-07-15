@@ -221,17 +221,17 @@ class ItemContainer extends React.Component {
               onClick={() => {this.props.removeItemFromCart(item)}}
               >Remove</button>
 
-              <button
-                className={styles.Button}
-                type='button'
-                onClick={() => {this.props.adjustItemCount(item, "add")}}
-                >add 1</button>
+            <button
+              className={styles.Button}
+              type='button'
+              onClick={() => {this.props.adjustItemCount(item, "add")}}
+              >+</button>
 
-                <button
-                  className={styles.Button}
-                  type='button'
-                  onClick={() => {this.props.adjustItemCount(item, "minus")}}
-                  >minus 1</button>
+            <button
+              className={styles.Button}
+              type='button'
+              onClick={() => {this.props.adjustItemCount(item, "minus")}}
+              >-</button>
 
 
           </div>

@@ -111,8 +111,8 @@
 }
 
 .cartItem {
-  width: 700px;
-  height: 120px;
+  width: 1000px;
+  height: 140px;
   display: flex;
   flex-direction: row;
   object-fit: cover;
