@@ -20,10 +20,10 @@ will continuously bundle files from ``src`` to ``dist``, then invoke
 # On Google Cloud
 
 This repository is connected to google cloud and a new version of the website
-will be built and hosted upon when a tag matching ``^v[0-9]+$`` (e.g. ``v1``,
+will be built and hosted when a tag matching ``^v[0-9]+$`` (e.g. ``v1``,
 ``v2``, ..., ``v12``) is pushed. This triggers the Cloud Build to perform
 the steps specified in ``npm run build`` and App Engine to perform ``npm
-start``.
+run start``.
 
 (WIP) The server is configured to redirect all request with the prefix ``/api/``
 to a dedicated backend server.
