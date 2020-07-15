@@ -17,5 +17,13 @@ To develop the front end, invoke ``npx webpack -w --mode production``, this
 will continuously bundle files from ``src`` to ``dist``, then invoke
 ``PORT=3001 node serve.js`` to serve those files on ``http://localhost:3001``.
 
+# On Google Cloud
+
+This repository is connected to google cloud and a new version of the website
+will be built and hosted upon when a tag matching ``^v[0-9]+$`` (e.g. ``v1``,
+``v2``, ..., ``v12``) is pushed. This triggers the Cloud Build to perform
+the steps specified in ``npm run build`` and App Engine to perform ``npm
+start``.
+
 (WIP) The server is configured to redirect all request with the prefix ``/api/``
-to a dedicated backend server. 
+to a dedicated backend server.
