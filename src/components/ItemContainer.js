@@ -130,8 +130,10 @@ class ItemContainer extends React.Component {
               to={`/item/${item.filename}`}
               className={styles.ItemTitle}
               >
-                {`${item.title} CAD$${item.price}`}
+                {`${item.title}`}
             </Link>
+
+            <p className = {styles.ItemTitle}>{`CAD$${item.price}`}</p>
 
             {addToCartButton}
           </div>
@@ -209,8 +211,15 @@ class ItemContainer extends React.Component {
               alt='image failed to load'
             />
 
+            <Link
+              to={`/item/${item.filename}`}
+              className={styles.ItemTitle}
+            >
+              {`${item.title}`}
+            </Link>
+
             <p className={styles.ItemTitle}>
-              {`${item.title} Price: CAD$${item.price}`}
+              {`CAD$${item.price}`}
             </p>
 
             <p>{`number added: ${item.count}`}</p>
