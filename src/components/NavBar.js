@@ -1,14 +1,15 @@
 import React from 'react';
 import createLinkTo from "./CreateLinkTo.js";
 import styles from "../stylesheets/NavBar.module.css";
+import { Link } from "react-router-dom";
 
-const NavBar = ({ pathUpdator }) => {
+const NavBar = () => {
   return (
     <div className={styles.Container}>
-      <a className={styles.NavBarItem} onClick={createLinkTo("/", pathUpdator)}>Home</a>
-      <a className={styles.NavBarItem} onClick={createLinkTo("/cart", pathUpdator)}>Cart</a>
-      <a className={styles.NavBarItem} onClick={createLinkTo("/aboutus", pathUpdator)}>About</a>
-      <a className={styles.NavBarItem} onClick={createLinkTo("/contact", pathUpdator)}>Contact</a>
+      <Link className={styles.NavBarItem} to="/">Home</Link>
+      <Link className={styles.NavBarItem} to="/cart">Cart</Link>
+      <Link className={styles.NavBarItem} to="/about">About</Link>
+      <Link className={styles.NavBarItem} to="/contact">Contact</Link>
     </div>
   )
 }

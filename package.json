@@ -28,6 +28,7 @@
     "style-loader": "1.2.1",
     "css-loader": "3.6.0",
     "react-router-dom": "5.2.0",
-    "@google-cloud/storage": "5.1.1"
+    "@google-cloud/storage": "5.1.1",
+    "nodemon": ""
   }
 }

@@ -1,15 +1,14 @@
 import React from 'react';
 import styles from "../stylesheets/ItemsView.module.css";
 import itemsCatalog from "../itemsInfo.json";
-import createLinkTo from "./CreateLinkTo.js";
+import {Link, useParams} from "react-router-dom";
 
-const ItemsView = ({pathUpdator, category}) => {
+const ItemsView = ({category}) => {
   const itemsSubset = itemsCatalog.filter(
     (item) => {return item["category"] === category;}
   );
   const itemsJSX = itemsSubset.map(
     (item, i) => { return <OneItem
-      pathUpdator={pathUpdator}
       item={item} 
       key={i}/>;}
   );
@@ -19,7 +18,7 @@ const ItemsView = ({pathUpdator, category}) => {
     </div>);
 }
 
-const OneItem = ({pathUpdator, item }) => {
+const OneItem = ({item}) => {
   const targetLink = "/item/" + item.title;
   return (
     <div className={styles.ItemCard}>
@@ -29,10 +28,10 @@ const OneItem = ({pathUpdator, item }) => {
         src={item.url}
         alt='image failed to load'/>
 
-      <a className={styles.ItemTitle}
-         onClick={createLinkTo(targetLink, pathUpdator)}>
+      <Link className={styles.ItemTitle}
+         to={targetLink}>
           {`${item.title}`}
-      </a>
+      </Link>
 
       <p className={styles.ItemTitle}>
         {`${item.price} CAD$`}
@@ -47,4 +46,9 @@ const OneItem = ({pathUpdator, item }) => {
   );
 }
 
-export default ItemsView;
+const RoutedItemsView = () => {
+  const category = useParams().category;
+  return <ItemsView category={category} />
+}
+
+export default RoutedItemsView;
