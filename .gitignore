@@ -3,3 +3,4 @@ node_modules
 dist/*
 src/itemsInfo.json
 scripts/itemsInfo.xlsx
+scratch/

@@ -1,20 +1,13 @@
-.NavBarContainer {
+.Container {
   composes: OverallAppearance from "./Shared.module.css";
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-end;
 }
 
-.NavBarTop {
-  composes: NavBarContainer;
-}
-
-.NavBarBot {
-  composes: NavBarContainer;
-}
-
 .NavBarItem {
   composes: OverallAppearance from "./Shared.module.css";
+  cursor: pointer;
   text-decoration: none;
   margin: 40px;
   font-size: 3em;
@@ -22,7 +15,7 @@
 
 /* Desktop mode overide*/
 @media (min-width: 1000px) {
-  .NavBarContainer {
+  .Container {
     flex-flow: row ;
     justify-content: flex-end;
   }
