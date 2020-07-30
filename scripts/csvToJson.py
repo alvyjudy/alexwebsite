@@ -8,7 +8,9 @@ postcard3, third, 4.29, third postcard
 
 output:
 [
-    {"filename":"postcard1":
+    {
+    "itemID":int,
+    "filename":"postcard1",
     "title": "first",
     "price": 9.99,
     "description": "first postcard"
@@ -32,6 +34,7 @@ index = []
 with open(csvFile, 'rt') as csv:
     firstline = csv.readline()
     line = csv.readline()
+    itemID = 1
     while line != "":
         line = line.split("\n")[0] #get ride of \n
         filename, category, title, price, description, *details = line.split(",")
@@ -46,7 +49,7 @@ with open(csvFile, 'rt') as csv:
         url = "/".join([URL_base, filename])
 
         itemInfo = {
-            "filename":filename,
+            "itemID":itemID,
             "title":title,
             "price":price,
             "description":description,
@@ -55,7 +58,7 @@ with open(csvFile, 'rt') as csv:
         }
 
         index.append(itemInfo)
-
+        itemID += 1
         line = csv.readline()
 
 with open(jsonFile, 'wt') as output:
