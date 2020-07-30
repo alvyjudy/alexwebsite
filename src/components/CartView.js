@@ -22,7 +22,7 @@ const CartView = () => {
         itemID={item.itemID}
         title={itemMeta.title}
         url={itemMeta.url}
-        filename={item.itemName}
+        count={item.itemCount}
         />;
       }
   );
@@ -30,10 +30,7 @@ const CartView = () => {
 }
 
 
-const Item = ({itemID, url}) => {
-  const items = useSelector(state=>state);
-  console.log('from item', items);
-  const count = items[itemID]['itemCount'];
+const Item = ({itemID, url, count}) => {
   const dispatch = useDispatch();
   return (
     <div className={styles.cartItem}>
