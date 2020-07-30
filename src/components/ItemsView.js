@@ -7,21 +7,16 @@ import {useDispatch} from "react-redux";
 
 const ItemsView = ({category}) => {
   const itemsSubset = itemsCatalog.filter(
-    (item) => {return item["category"] === category;}
+    item => item["category"] === category
   );
   const itemsJSX = itemsSubset.map(
-    (item, i) => { return <OneItem
-      {...item} 
-      key={i}/>;}
+    item => <OneItem key={item.itemID} {...item} />
   );
-  return (
-    <div className={styles.Container}>
-      {itemsJSX}
-    </div>);
+  return <div className={styles.Container}>{itemsJSX}</div>
 }
 
-const OneItem = ({title, filename, url, price, description}) => {
-  const targetLink = "/item/" + filename;
+const OneItem = ({itemID, title, url, price, description}) => {
+  const targetLink = "/item/" + itemID;
   const dispatch = useDispatch();
   return (
     <div className={styles.ItemCard}>
@@ -47,7 +42,7 @@ const OneItem = ({title, filename, url, price, description}) => {
       <button className={styles.Button}
         onClick={(e)=>{
           e.preventDefault;
-          dispatch(addNewItem(filename));
+          dispatch(addNewItem(itemID));
         }}>
           add to cart
         </button>

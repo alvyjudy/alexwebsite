@@ -12,43 +12,41 @@ const arrayToObj = (array, key) => {
     }, {})
 }
 
-
-
-const itemsCatalogObj = arrayToObj(itemsCatalog, 'filename')
-
 const CartView = () => {
   const items = useSelector(state => state);
-  const itemsArr = Object.values(items);
-  const itemsJSX = itemsArr.map(
-    (item, i) => {
-      const itemMeta = itemsCatalogObj[item.itemName]
-      return (<Item 
-        key={i}
+  const itemsJSX = Object.values(items).map(
+    (item) => {
+      const itemMeta = itemsCatalog[item.itemID]
+      return <Item 
+        key={item.itemID}
+        itemID={item.itemID}
         title={itemMeta.title}
         url={itemMeta.url}
-        count={item.itemCount}
         filename={item.itemName}
-        />);
+        />;
       }
   );
   return <div className={styles.Container}>{itemsJSX}</div>
 }
 
 
-const Item = ({title, url, count, filename}) => {
+const Item = ({itemID, url}) => {
+  const items = useSelector(state=>state);
+  console.log('from item', items);
+  const count = items[itemID]['itemCount'];
   const dispatch = useDispatch();
   return (
     <div className={styles.cartItem}>
       <img className={styles.cartItemImage} src={url} />
       <p>{count}</p>
       <button onClick={()=>{
-        dispatch(adjustItemCount(filename, 1))
+        dispatch(adjustItemCount(itemID, 1))
       }}>+</button>
       <button onClick={()=>{
-        dispatch(adjustItemCount(filename, -1))
+        dispatch(adjustItemCount(itemID, -1))
       }}>-</button>
       <button onClick={()=>{
-        dispatch(rmItemFromCart(filename))
+        dispatch(rmItemFromCart(itemID))
       }}>Remove</button>
     </div>
   )

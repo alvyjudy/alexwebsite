@@ -3,15 +3,15 @@
 
 
 //action creator
-export const addNewItem = (itemName) => {
+export const addNewItem = (itemID) => {
   console.log('action called');
-  return {type: "ADD_NEW_ITEM", itemName}
+  return {type: "ADD_NEW_ITEM", itemID}
 }
 
-export const rmItemFromCart = (itemName) => {
-  return {type: "RM_ITEM_FROM_CART", itemName}
+export const rmItemFromCart = (itemID) => {
+  return {type: "RM_ITEM_FROM_CART", itemID}
 }
 
-export const adjustItemCount = (itemName, itemCount) => {
-  return {type:"ADJUST_ITEM_COUNT", itemName, itemCount}
+export const adjustItemCount = (itemID, itemCount) => {
+  return {type:"ADJUST_ITEM_COUNT", itemID, itemCount}
 }

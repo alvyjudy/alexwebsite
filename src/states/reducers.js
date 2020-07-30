@@ -6,30 +6,23 @@ const cartItems = (state={}, action) => {
     case "ADD_NEW_ITEM":
       return {...state,
         [action.itemID]: {
-          itemName: action.itemName,
           itemID: action.itemID,
           itemCount: 1}
         }
+
     case "RM_ITEM_FROM_CART":
-      return state.filter(
-        item => item.itemName !== action.itemName
-      );
+      let newState = {...state};
+      delete newState[action.itemID];
+      return newState;
+    
     case "ADJUST_ITEM_COUNT":
-      const newState = [];
-      let oldCount;
-      state.forEach(
-        item => { switch (item.itemName === action.itemName) {
-                    case true:
-                      oldCount = item.itemCount;
-                    default:
-                      newState.push(item);
-                    }}
-      );
+      console.log('item count adjust')
+      newState = {...state};
+      const oldCount = state[action.itemID]['itemCount'];
       const newCount = Math.max(1, oldCount + action.itemCount);
-      return [...newState,
-        {itemName: action.itemName,
-        itemCount: newCount}
-      ]
+      newState[action.itemID]['itemCount'] = newCount;
+      return newState;
+
     default: 
       return state;
   }
