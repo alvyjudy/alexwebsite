@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import styles from "../stylesheets/OneCategoryStyle.module.css";
 import itemsCatalog from "../itemsInfo.json";
-import StateContext from "./StateContext.js";
 import {Link} from "react-router-dom";
 
 const CategoriesView = ({}) => {
@@ -21,8 +20,6 @@ const CategoriesView = ({}) => {
 }
 
 const OneCategory = ({item}) => {
-  const contextTest = useContext(StateContext);
-  console.log(contextTest);
   const targetLink = "/items/" + item.title;
   return (
     <Link to={targetLink}

@@ -2,6 +2,8 @@ import React from 'react';
 import styles from "../stylesheets/ItemsView.module.css";
 import itemsCatalog from "../itemsInfo.json";
 import {Link, useParams} from "react-router-dom";
+import {addNewItem} from "../states/actions.js";
+import {useDispatch} from "react-redux";
 
 const ItemsView = ({category}) => {
   const itemsSubset = itemsCatalog.filter(
@@ -9,7 +11,7 @@ const ItemsView = ({category}) => {
   );
   const itemsJSX = itemsSubset.map(
     (item, i) => { return <OneItem
-      item={item} 
+      {...item} 
       key={i}/>;}
   );
   return (
@@ -18,28 +20,37 @@ const ItemsView = ({category}) => {
     </div>);
 }
 
-const OneItem = ({item}) => {
-  const targetLink = "/item/" + item.title;
+const OneItem = ({title, filename, url, price, description}) => {
+  const targetLink = "/item/" + filename;
+  const dispatch = useDispatch();
   return (
     <div className={styles.ItemCard}>
 
       <img
         className={styles.ItemImage}
-        src={item.url}
+        src={url}
         alt='image failed to load'/>
 
       <Link className={styles.ItemTitle}
          to={targetLink}>
-          {`${item.title}`}
+          {`${title}`}
       </Link>
 
       <p className={styles.ItemTitle}>
-        {`${item.price} CAD$`}
+        {`${price} CAD$`}
       </p>
 
       <p className={styles.ItemTitle}>
-        {`${item.description}`}
+        {`${description}`}
       </p>
+
+      <button className={styles.Button}
+        onClick={(e)=>{
+          e.preventDefault;
+          dispatch(addNewItem(filename));
+        }}>
+          add to cart
+        </button>
 
 
     </div>
