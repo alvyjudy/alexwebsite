@@ -1,7 +1,7 @@
 import {combineReducers} from "redux";
 
+
 const cartItems = (state={}, action) => {
-  console.log('reduer call');
   switch (action.type) {
     case "ADD_NEW_ITEM":
       return {...state,
@@ -28,4 +28,22 @@ const cartItems = (state={}, action) => {
   }
 }
 
-export default cartItems;
+const initAuth = {
+  authenticated: false,
+  token:""
+}
+
+const auth = (state=initAuth, action) => {
+  switch (action.type) {
+    case "APPROVE_LOGIN":
+      return {...state,
+        authenticated: true,
+        token: action.token}
+    case "LOGOUT":
+      return {...initAuth}
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({auth, cartItems});

@@ -16,7 +16,7 @@ const CartView = () => {
   const items = useSelector(state => state);
   const itemsJSX = Object.values(items).map(
     (item) => {
-      const itemMeta = itemsCatalog[item.itemID]
+      const itemMeta = arrayToObj(itemsCatalog, 'itemID')[item.itemID];
       return <Item 
         key={item.itemID}
         itemID={item.itemID}

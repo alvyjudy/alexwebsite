@@ -10,11 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "4.17.1",
     "react": "",
-    "react-dom": "",
-    "express": "4.17.1"
+    "react-dom": ""
   },
   "devDependencies": {
+    "redux-thunk": "",
+    "redux-devtools-extension": "",
+    "axios": "^0.19.2",
     "redux": "",
     "react-redux": "",
     "@babel/core": "",
