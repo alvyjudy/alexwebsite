@@ -2,35 +2,48 @@ import axios from "axios";
 const BACKEND = "http://localhost:3002"
 
 //cart items
-export const addNewItem = (itemID) => {
+const addNewItem = (itemID) => {
   console.log('action called');
   return {type: "ADD_NEW_ITEM", itemID}
 }
-
-export const rmItemFromCart = (itemID) => {
+const rmItemFromCart = (itemID) => {
   return {type: "RM_ITEM_FROM_CART", itemID}
 }
 
-export const adjustItemCount = (itemID, itemCount) => {
+const adjustItemCount = (itemID, itemCount) => {
   return {type:"ADJUST_ITEM_COUNT", itemID, itemCount}
 }
 
 
 //authentication
-export const loginUser = (email, passphrase) => dispatch => {
+const loginUser = (email, password) => async dispatch => {
+  dispatch({type: "auth/loginUserStart"})
+  
+  
   axios({
     url: BACKEND + "/login",
     method: "post",
     data:{
       email,
-      passphrase
+      password
     }
   })
   .then(response => {
     response.status===200 ? 
-    dispatch({type: "APPROVE_LOGIN", token: response.data.token}) :
+    dispatch({type: "APPROVE_LOGIN", tokenValue: response.data.tokenValue}) :
     console.log('incorrect authentication');
   })
   .catch(console.log)
 }
 
+export default {
+  cart: {
+    addNewItem,
+    rmItemFromCart,
+    adjustItemCount
+  },
+  auth: {
+    loginUser,
+    registerUser
+  }
+}
