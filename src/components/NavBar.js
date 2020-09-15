@@ -1,23 +1,41 @@
-import React from 'react';
-import createLinkTo from "./CreateLinkTo.js";
+import React, {useState} from 'react';
 import styles from "../stylesheets/NavBar.module.css";
 import { Link } from "react-router-dom";
+import {CSSTransitionGroup} from "react-transition-group";
 
-const NavBar = ({user}) => {
+
+
+
+export const LoggedInNavBar = () => {
+  const [dropdown, setDropdown] = useState(false);
+  return (
+  <div className={styles.Container}>
+      <Link className={styles.NavBarItem} to="/">Home</Link>
+      <Link className={styles.NavBarItem} to="/cart">Cart</Link>
+      <div className={styles.NavBarItemIcon} onClick={
+        ()=>{setDropdown(dropdown? false : true)}
+        }>UserIcon
+      </div>
+      
+      <div className={dropdown? styles.DropdownActive : styles.Dropdown}>
+        <Link className={styles.NavBarItem} to="/profile">profile</Link>
+        <div className={styles.NavBarItem} to="/logout">log out</div>
+      </div> 
+
+      
+      
+    </div>)
+}
+
+
+export const LoggedOutNavBar = () => {
   return (
     <div className={styles.Container}>
       <Link className={styles.NavBarItem} to="/">Home</Link>
       <Link className={styles.NavBarItem} to="/cart">Cart</Link>
-      <Link className={styles.NavBarItem} to="/about">About</Link>
-      <Link className={styles.NavBarItem} to="/contact">Contact</Link>
-      {user}
+      <Link className={styles.NavBarItem} to='/login'>Login/Signup</Link>
     </div>
+    
   )
 }
 
-export const LoggedInNavBar = () => {
-  const Element = <div></div>
-  return <NavBar user={} />
-}
-
-export default NavBar;

@@ -1,16 +1,50 @@
 .Container {
-  composes: OverallAppearance from "./Shared.module.css";
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-end;
 }
 
 .NavBarItem {
-  composes: OverallAppearance from "./Shared.module.css";
+  color: black;
   cursor: pointer;
   text-decoration: none;
-  margin: 40px;
+  margin: 40px 20px;
   font-size: 3em;
+}
+
+.NavBarItemIcon {
+  composes: NavBarItem;
+  position: relative;
+}
+
+.Dropdown {
+  border: 1px black solid;
+  padding: 10px;
+  position: absolute;
+  top: 140px;
+  right: 30px;
+  z-index: 100;
+  background-color: white;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.DropdownActive {
+  composes: Dropdown;
+  opacity: 1;
+}
+
+.enter {
+  opacity: 0;
+}
+
+.leave {
+  opacity: 1;
+}
+
+@keyframes openDropdown {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
 /* Desktop mode overide*/
@@ -24,3 +58,4 @@
     font-size: 2em;
   }
 }
+
