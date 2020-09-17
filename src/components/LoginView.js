@@ -1,70 +1,72 @@
 import React, {useState} from "react";
-import styles from "../stylesheets/LoginView.module.css";
 import {Link, useHistory} from "react-router-dom";
-import axios from "axios";
-import {useDispatch} from "react-redux";
-const BACKEND = "http://localhost:3002";
+import {useSelector, useDispatch} from "react-redux";
+import styles from "../stylesheets/LoginView.module.css";
+import {loginUser, registerUser} from "../states/auth.thunk";
 
-const Login = () => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+
+export const LoginUI = (props) => {
+  //user input
   const [email, setEmail] = useState("");
-  const [passphrase, setPassphrase] = useState("x");
+  const [password, setPassword] = useState("x");
 
-  const authenticateByInput = () => {
-    console.log(email);
-    console.log(passphrase);
+  //login or register?
+  const [loginMode, setMode] = useState(true);
 
-    axios({
-      url: BACKEND+"/api/login",
-      method: "post",
-      headers: {"Content-Type":"Application/json"},
-      data: {email, passphrase}, 
-    })
-    .then(
-      (response)=>{
-        if (response.data.status === 200) {
-          return "authenticated"
-        } else {
-          throw "authentication failed"
-        }
-      },
-      (error) => {console.log("Request Error", error)}
-    )
-    .then(
-      () => {
-        //authenticated
-        dispatch()
-        history.push("/");
-      },
-      () => {
-        //authentication failed
-      }
-
-    )
-    
-  }
+  //actions defined in parent
+  const dispatch = props.dispatch;
+  const action = loginMode ? props.loginUser : props.registerUser
   
-  return <form className={styles.form} onSubmit={(e)=>{e.preventDefault()}}>
-    <div className={styles.topTitle}>User Login</div>
-    <input className={styles.inputField} 
-      type="text" 
-      placeholder="Enter Username" 
-      required 
-      onChange={e=>{setEmail(e.target.value)}}
-      />
-    <input 
-      className={styles.inputField} 
-      type="password" 
-      placeholder="Enter password"
-      required 
-      onChange={e=>{setPassphrase(e.target.value)}}
-      />
-    <button className={styles.loginBut} onClick={authenticateByInput}>Login</button>
-    <Link to="/register">Sign up here</Link>
-  </form>
+  return (
+    <form className={styles.form} 
+      onSubmit={(e)=>{
+        e.preventDefault()
+        dispatch(action(email, password))
+      }}>
+
+      <div className={styles.topTitle}>{loginMode ? "Login" : "Register"}</div>
+      
+      <input className={styles.inputField} 
+        type="text" 
+        placeholder="Enter Username" 
+        required 
+        onChange={e=>{setEmail(e.target.value)}}
+        />
+
+      <input 
+        className={styles.inputField} 
+        type="password" 
+        placeholder="Enter password"
+        required 
+        onChange={e=>{setPassword(e.target.value)}}
+        />
+
+      <input className={styles.loginBut} type="submit" value={
+        loginMode? "Login" : "Register"} />
+
+      <button className={styles.forgetOrRegister} onClick={(e)=>{
+        e.preventDefault();
+        setMode(!loginMode);
+      }}>{loginMode ? "Register" : "Login"}</button>
+
+      <button className={styles.forgetOrRegister} onClick={(e)=>{
+        e.preventDefault();
+      }}>Forgot password?</button>
+
+    </form> )
 }
 
-
-
-export default Login;
+export const Login = (props) => {
+  const dispatch = useDispatch();
+  const {
+    authenticated,
+    inProgress,
+    registered,
+  } = useSelector(state=>state.auth);
+  
+  return <LoginUI 
+    dispatch={dispatch}
+    loginUser={loginUser}
+    registerUser={registerUser}
+    />
+}
