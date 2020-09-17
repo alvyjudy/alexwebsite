@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type":"module",
   "scripts": {
     "build": "python3 scripts/csvToJson.py && webpack --mode production",
     "start": "node serve.js"
