@@ -1,3 +1,11 @@
+# Turns out not as useful
+
+Turns out this hack involves too much trickery and I end up spending way
+more time making things work than getting stuff done. First it involves
+two react instance which is not supported and hooks don't work. It seems
+When coming up with this I only had a shallow understanding of the inner
+workings of these libraries. 
+
 # Prototyping workflow
 
 This trick allows me to create individual page for React component
