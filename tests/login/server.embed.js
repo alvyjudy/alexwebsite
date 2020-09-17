@@ -22,6 +22,6 @@ server.post("/login", express.json(), (req, res)=>{
 
 const serverIns = server.listen();
 process.env.APIENDPOINT = "http://localhost:" + serverIns.address().port;
-
+console.log("listening on", process.env.APIENDPOINT)
 
 export {serverIns}

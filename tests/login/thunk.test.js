@@ -9,7 +9,7 @@ import thunk from "redux-thunk";
 import axios from "axios";
 
 //import and start mock API
-import {serverIns} from "./server";
+import {serverIns} from "./server.embed";
 
 
 //import app objects
