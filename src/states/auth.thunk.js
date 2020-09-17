@@ -6,7 +6,7 @@ import {
   loginFail
 } from "./auth.actions";
 
-const BACKEND = process.env.APIENDPOINT;
+const BACKEND = process.env.APIENDPOINT
 
 export const loginUser = (email, password) => async dispatch => {
   dispatch(loginInProgress())
@@ -14,6 +14,7 @@ export const loginUser = (email, password) => async dispatch => {
   await axios({
     url: BACKEND + "/login",
     method: "post",
+    timeout: 1000,
     data:{
       email,
       password
