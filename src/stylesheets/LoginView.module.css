@@ -1,8 +1,8 @@
 .form {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   width: 40vw;
-  height: 80vw;
   margin: auto;
   padding: 20px 40px;
   align-items: center;
@@ -26,6 +26,8 @@
   padding: 10px;
   background-color: white;
   margin:20px;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .forgetOrRegister {
