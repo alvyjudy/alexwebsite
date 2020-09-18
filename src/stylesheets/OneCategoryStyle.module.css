@@ -18,20 +18,6 @@
   margin: 10px;
 }
 
-/*for use in desktop*/
-@media (min-width: 1000px) {
-  .Container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    grid-gap: 10px 10px;
-  }
-
-  .Category {
-    margin: 0px;
-  }
-}
-
 .TextInPic {
   color: white;
   font-family: monospace;
