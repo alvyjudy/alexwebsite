@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import {
-  loginInProgress,
+  inProgress,
   loginSucceed,
   loginFail
 } from "./auth.actions";
@@ -9,12 +9,12 @@ import {
 const BACKEND = process.env.APIENDPOINT
 
 export const loginUser = (email, password) => async dispatch => {
-  dispatch(loginInProgress())
-  
+  dispatch(inProgress())
+  console.log("dispatching, endpoint:", BACKEND)
   await axios({
     url: BACKEND + "/login",
     method: "post",
-    timeout: 1000,
+    timeout: 5000,
     data:{
       email,
       password
@@ -24,6 +24,7 @@ export const loginUser = (email, password) => async dispatch => {
     const status = response.status;
     const userId = response.data.userId; //change backend "ID" to "Id"
     const tokenValue = response.data.tokenValue;
+    console.log('login success')
     dispatch(loginSucceed(userId, tokenValue))
   })
   .catch(e=>{

@@ -1,5 +1,5 @@
 import {
-  LOGIN_IN_PROGRESS,
+  IN_PROGRESS,
   LOGIN_SUCCEED,
   LOGIN_FAIL,
   REGISTRATION_SUCCEED,
@@ -8,9 +8,8 @@ import {
 } from "./auth.actions";
 
 export const auth = (state = {
-    authenticated: false,
-    loginInProgress: false,
-    registrationInProgress: false,
+    loggedIn: false,
+    inProgress: false,
     tokenValue: undefined,
     userId: undefined,
     errorMsg: undefined,
@@ -18,40 +17,35 @@ export const auth = (state = {
   }, action) => {
 
   switch (action.type) {
-    case LOGIN_IN_PROGRESS:
+    case IN_PROGRESS:
       return {...state, 
-        loginInProgress: true
+        inProgress: true
       }
 
     case LOGIN_SUCCEED:
       return {...state, 
-        authenticated: true, 
+        loggedIn: true, 
         userId: action.userId,
         tokenValue: action.tokenValue,
-        loginInProgress: false,
+        inProgress: false,
       }
 
     case LOGIN_FAIL:
       return {...state,
         errorMsg: action.errorMsg,
-        loginInProgress: false,
+        inProgress: false,
       }
-
-    case REGISTRATION_IN_PROGRESS:
-      return {...state,
-        registrationInprogress:true,
-    }
 
     case REGISTRATION_SUCCEED:
       return {...state, 
         registered: true,
-        registrationInProgress: false,
+        inProgress: false,
       }
 
     case REGISTRATION_FAIL:
       return {...state, 
         error: action.errorMsg,
-        registrationInProgress: false,
+        inProgress: false,
       }
 
     default:

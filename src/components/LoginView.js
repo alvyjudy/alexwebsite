@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Link, useHistory} from "react-router-dom";
+import {Link, useHistory, Redirect} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
 import styles from "../stylesheets/LoginView.module.css";
 import {loginUser, registerUser} from "../states/auth.thunk";
@@ -10,26 +10,35 @@ export const LoginUI = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("x");
 
-  //login or register?
+  //mode
   const [loginMode, setMode] = useState(true);
+  const inProgress = props.inProgress;
+  const loggedIn = props.loggedIn;
+  const registered = props.registered;
+  const errorMsg = props.errorMsg;
 
   //actions defined in parent
-  const dispatch = props.dispatch;
-  const action = loginMode ? props.loginUser : props.registerUser
+  const dispatch = props.dispatch 
+    || (()=>{console.log("pure UI mode")});
+  const action = (loginMode ? props.loginUser : props.registerUser) 
+    || (()=>{console.log("pure UI mode")});
+  const history=props.history || (()=>{console.log("pure UI mode")})
   
-  return (
-    <form className={styles.form} 
-      onSubmit={(e)=>{
-        e.preventDefault()
-        dispatch(action(email, password))
-      }}>
+  if (loggedIn) {
+    return <div>logged in<Redirect to='/'/></div>
+  } else if (registered) {
+    history.push("/")
+    return <div>registered</div>
+  } else {
+    return (
+    <form className={styles.form}>
 
       <div className={styles.topTitle}>{loginMode ? "Login" : "Register"}</div>
       
       <input className={styles.inputField} 
         type="text" 
         placeholder="Enter Username" 
-        required 
+        /*required*/
         onChange={e=>{setEmail(e.target.value)}}
         />
 
@@ -37,12 +46,23 @@ export const LoginUI = (props) => {
         className={styles.inputField} 
         type="password" 
         placeholder="Enter password"
-        required 
+        /*required*/ 
         onChange={e=>{setPassword(e.target.value)}}
         />
+      
+      {(errorMsg && !inProgress) ? <div>{props.errorMsg} or invalid credential</div> : undefined}
 
-      <input className={styles.loginBut} type="submit" value={
-        loginMode? "Login" : "Register"} />
+      <button 
+        className={styles.loginBut} 
+        onClick={(e)=>{
+          e.preventDefault();
+          dispatch(action(email, password))
+        }}>
+        {
+          inProgress ? <div>In Progress...</div> :
+          loginMode ? "Login" : "Register"
+        }
+      </button>
 
       <button className={styles.forgetOrRegister} onClick={(e)=>{
         e.preventDefault();
@@ -53,20 +73,31 @@ export const LoginUI = (props) => {
         e.preventDefault();
       }}>Forgot password?</button>
 
-    </form> )
+    </form> )}
 }
 
 export const Login = (props) => {
   const dispatch = useDispatch();
   const {
-    authenticated,
+    loggedIn,
     inProgress,
     registered,
+    errorMsg,
   } = useSelector(state=>state.auth);
+  const history = useHistory();
+  
+  console.log("inProgress?", inProgress)
+  console.log("loggedIn?", loggedIn);
+  console.log("errormsg", errorMsg);
+  
   
   return <LoginUI 
     dispatch={dispatch}
     loginUser={loginUser}
     registerUser={registerUser}
+    inProgress={inProgress}
+    loggedIn={loggedIn}
+    errorMsg={errorMsg}
+    history={history}
     />
 }
