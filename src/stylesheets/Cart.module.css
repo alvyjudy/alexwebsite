@@ -9,7 +9,6 @@
 }
 
 .cartItem {
-  width: 1000px;
   height: 140px;
   display: flex;
   flex-direction: row;
