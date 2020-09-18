@@ -3,10 +3,10 @@ steps:
   args: ['python', './scripts/csvToJson.py']
 
 - name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
-  args: ['npm', 'install']
+  args: ['yarn', 'install']
 
 - name: 'nikolaik/python-nodejs:python3.7-nodejs10-alpine'
-  args: ['npx', 'webpack', '--mode', 'production']
+  args: ['yarn', 'parcel', 'build', '-d', 'dist', 'src/entry.html']
 
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy']
