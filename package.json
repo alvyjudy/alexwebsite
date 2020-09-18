@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type":"module",
   "scripts": {
     "build": "python3 scripts/csvToJson.py && webpack --mode production",
     "start": "node serve.js"
@@ -10,30 +11,26 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "4.17.1",
-    "react": "",
-    "react-dom": ""
+    "express": "^4.17.1"
   },
   "devDependencies": {
-    "redux-thunk": "",
-    "redux-devtools-extension": "",
-    "axios": "^0.19.2",
-    "redux": "",
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "autoprefixer": "^10.0.0",
+    "axios": "^0.20.0",
+    "dotenv": "^8.2.0",
+    "http-terminator": "^2.0.3",
+    "jest": "^26.4.2",
+    "parcel": "",
+    "postcss": "^8.0.2",
+    "postcss-modules": "^3.2.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-redux": "",
-    "@babel/core": "",
-    "babel-loader": "",
-    "@babel/preset-env": "",
-    "@babel/preset-react": "",
-    "html-webpack-plugin": "",
-    "html-loader": "",
-    "webpack": "4.43.0",
-    "webpack-cli": "3.3.12",
-    "webpack-dev-server": "3.11.0",
-    "file-loader": "6.0.0",
-    "style-loader": "1.2.1",
-    "css-loader": "3.6.0",
     "react-router-dom": "5.2.0",
-    "@google-cloud/storage": "5.1.1",
-    "nodemon": ""
+    "redux": "",
+    "redux-devtools-extension": "",
+    "redux-thunk": ""
   }
 }

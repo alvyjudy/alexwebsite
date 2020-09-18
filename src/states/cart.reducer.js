@@ -1,21 +1,24 @@
-import {combineReducers} from "redux";
+import {
+  ADD_ITEM_TO_CART,
+  RM_ITEM_FROM_CART,
+  ADJUST_ITEM_COUNT,
+} from "./cart.actions";
 
-
-const cartItems = (state={}, action) => {
+export const cart = (state={}, action) => {
   switch (action.type) {
-    case "ADD_NEW_ITEM":
+    case ADD_ITEM_TO_CART:
       return {...state,
         [action.itemID]: {
           itemID: action.itemID,
           itemCount: 1}
         }
 
-    case "RM_ITEM_FROM_CART":
+    case RM_ITEM_FROM_CART:
       let newState = {...state};
       delete newState[action.itemID];
       return newState;
     
-    case "ADJUST_ITEM_COUNT":
+    case ADJUST_ITEM_COUNT:
       console.log('item count adjust')
       newState = {...state};
       const oldCount = state[action.itemID]['itemCount'];
@@ -27,23 +30,3 @@ const cartItems = (state={}, action) => {
       return state;
   }
 }
-
-const initAuth = {
-  authenticated: false,
-  token:""
-}
-
-const auth = (state=initAuth, action) => {
-  switch (action.type) {
-    case "APPROVE_LOGIN":
-      return {...state,
-        authenticated: true,
-        token: action.token}
-    case "LOGOUT":
-      return {...initAuth}
-    default:
-      return state;
-  }
-}
-
-export default combineReducers({auth, cartItems});

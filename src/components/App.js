@@ -5,11 +5,11 @@ import ItemsView from "./ItemsView";
 import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
 import CartView from "./CartView.js";
 import {useSelector} from "react-redux";
+import LoginView from "./LoginView.js";
 
 const App = (props) => {
   const authenticated = useSelector(state=>state.auth.authenticated)
-  console.log(authenticated);
-  return <div>Helloworld</div>
+
   return (
     <BrowserRouter>
       {authenticated ? <LoggedInNavBar /> : <LoggedOutNavBar />}
@@ -20,9 +20,19 @@ const App = (props) => {
         <Route path="/cart">
           <CartView />
         </Route>
+
+        <Route path="/login">
+          <LoginView />
+        </Route>
+
         <Route path="/">
           <CategoriesView />
         </Route>
+
+        <Route>
+          No match!
+        </Route>
+        
       </Switch>
     </BrowserRouter>
 

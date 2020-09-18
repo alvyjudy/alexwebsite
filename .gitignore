@@ -4,3 +4,6 @@ dist/*
 src/itemsInfo.json
 scripts/itemsInfo.xlsx
 scratch/
+.cache
+snippets/
+tests/login/.env
