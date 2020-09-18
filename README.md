@@ -1,12 +1,20 @@
-# Front-end code for Alex's website
+# Project overview (WIP)
+
+This is the frontend codebase that's intended to communicate with the 
+(backend)[https://github.com/alvyjudy/alexwebsite-backend-2]. The frontend
+will be served on a dedicated server that also acts as a proxy, such that
+incoming client request will be forwarded to the backend to avoid CORS issue.
+
+
+# Development guide
 
 To start developing, first clone this repository
 (``git clone https://github.com/alvyjudy/alexwebsite.git``)  and invoke
-``npm install`` to initialize the project.
+``yarn install`` to initialize the project.
 
-To build locally, invoke ``npm run build``
+To build locally, invoke ``yarn run build``
 
-To deploy locally after the build, invoke ``npm run start``
+To deploy locally after the build, invoke ``yarn run start``
 
 To deploy locally built files to google cloud app engine, run ``gcloud app
 deploy``
