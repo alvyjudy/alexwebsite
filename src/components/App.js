@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 import {LoggedInNavBar, LoggedOutNavBar} from "./NavBar.js";
 import CategoriesView from "./CategoriesView.js";
-import ItemsView from "./ItemsView";
+import {ItemsView} from "./ItemsView";
 import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
-import CartView from "./CartView.js";
+import {CartView} from "./CartView.js";
 import {useSelector} from "react-redux";
-import LoginView from "./LoginView.js";
+import {Login} from "./LoginView.js";
 
 const App = (props) => {
-  const authenticated = useSelector(state=>state.auth.authenticated)
+  const loggedIn = useSelector(state=>state.auth).loggedIn
 
   return (
     <BrowserRouter>
-      {authenticated ? <LoggedInNavBar /> : <LoggedOutNavBar />}
+      {loggedIn ? <LoggedInNavBar /> : <LoggedOutNavBar />}
       <Switch>
         <Route path="/items/:category">
           <ItemsView />
@@ -22,7 +22,7 @@ const App = (props) => {
         </Route>
 
         <Route path="/login">
-          <LoginView />
+          <Login />
         </Route>
 
         <Route path="/">

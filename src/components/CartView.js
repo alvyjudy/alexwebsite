@@ -2,7 +2,7 @@ import React from 'react';
 import itemsCatalog from "../itemsInfo.json";
 import styles from "../stylesheets/Cart.module.css";
 import {useDispatch, useSelector} from "react-redux";
-import {rmItemFromCart, adjustItemCount} from "../states/actions.js";
+import {rmItemFromCart, adjustItemCount} from "../states/cart.actions";
 
 const arrayToObj = (array, key) => {
   return array.reduce(
@@ -12,8 +12,8 @@ const arrayToObj = (array, key) => {
     }, {})
 }
 
-const CartView = () => {
-  const items = useSelector(state => state);
+export const CartView = () => {
+  const items = useSelector(state => state.cart);
   const itemsJSX = Object.values(items).map(
     (item) => {
       const itemMeta = arrayToObj(itemsCatalog, 'itemID')[item.itemID];
@@ -30,7 +30,7 @@ const CartView = () => {
 }
 
 
-const Item = ({itemID, url, count}) => {
+export const Item = ({itemID, url, count}) => {
   const dispatch = useDispatch();
   return (
     <div className={styles.cartItem}>
@@ -48,5 +48,3 @@ const Item = ({itemID, url, count}) => {
     </div>
   )
 }
-
-export default CartView

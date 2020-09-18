@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import styles from "../stylesheets/NavBar.module.css";
 import { Link } from "react-router-dom";
-import {CSSTransitionGroup} from "react-transition-group";
-
-
 
 
 export const LoggedInNavBar = () => {
