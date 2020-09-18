@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
-    "build": "python3 scripts/csvToJson.py && webpack --mode production",
+    "build": "python3 scripts/csvToJson.py && parcel build -d dist src/entry.html",
     "start": "node serve.js"
   },
   "author": "",
@@ -16,6 +16,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
     "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "autoprefixer": "^10.0.0",
     "axios": "^0.20.0",
