@@ -1,49 +1,92 @@
 .Container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10px 20px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
   margin: 20px;
 }
 
 .ItemCard {
-  height:500px;
+  height:20em;
+  width: 15em;
+  margin: 1em;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  object-fit: cover;
-  align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   border: 0px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .ItemImage {
-  padding: 10px;
-  height: 60%;
+  padding: 0;
+  height: 50%;
   flex-shrink: 1;
 }
 
-.ItemTitle {
-  flex-shrink: 2;
-  text-decoration: none;
-  color: black;
+.ItemContent {
+  align-items: center;
   font-family: monospace;
+  height: 48%;
+  display: grid;
+  padding: 0 0.5em 2% 0.5em;
+  grid-template-rows: repeat(5, 20%);
+  grid-template-columns: 50% 50%;
+  grid-template-areas: 
+    "title  title"
+    "price  price"
+    "des    des"
+    "des    des"
+    "but1   but2";
+}
+
+.ItemTitle {
+  text-align: center;
+  color: black;
+  grid-area: title;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ItemPrice {
+  text-align: center;
+  color: black;
+  margin: 0;
+  padding: 0;
+  grid-area: price;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.ItemDescription {
+  text-align: center;
+  color: black;
+  margin: 0;
+  padding: 0;
+  grid-area: des;
+  overflow: hidden;
 }
 
 .Button {
+  grid-area: but1;
   flex-shrink: 2;
   border: 1px solid navy;
   font-family: monospace;
   color: white;
   background-color: navy;
   padding: 10px;
+  white-space: nowrap;
 }
 
 .ButtonClicked {
+  grid-area: but1;
   flex-shrink: 2;
   border: 1px solid navy;
   font-family: monospace;
   color: white;
   background-color: black;
   padding: 10px;
+  white-space: nowrap;
 }
