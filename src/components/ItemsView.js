@@ -17,29 +17,31 @@ export const OneItem = (props) => {
         src={props.url}
         alt='image failed to load'/>
 
-      <Link className={styles.ItemTitle}
-         to={targetLink}>
-          {props.title}
-      </Link>
+      <div className={styles.ItemContent}>
 
-      <p className={styles.ItemTitle}>
-        {`${props.price} CAD$`}
-      </p>
+        <Link className={styles.ItemTitle}
+          to={targetLink}>
+            {props.title}
+        </Link>
 
-      <p className={styles.ItemTitle}>
-        {`${props.description}`}
-      </p>
+        <p className={styles.ItemPrice}>
+          {`${props.price} CAD$`}
+        </p>
 
-      <button className={clicked? styles.ButtonClicked : styles.Button}
-        onClick={(e)=>{
-          e.preventDefault;
-          dispatch(addItemToCart(props.itemID));
-          setClicked(true);
-        }}>
-          {clicked ? "added to cart" : "add to cart"}
-        </button>
+        <p className={styles.ItemDescription}>
+          {`${props.description}`}
+        </p>
 
+        <button className={clicked? styles.ButtonClicked : styles.Button}
+          onClick={(e)=>{
+            e.preventDefault;
+            dispatch(addItemToCart(props.itemID));
+            setClicked(true);
+          }}>
+            {clicked ? "added to cart" : "add to cart"}
+          </button>
 
+      </div>
     </div>
   );
 }
