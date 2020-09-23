@@ -10,29 +10,100 @@
 
 .cartItem {
   height: 140px;
-  display: flex;
-  flex-direction: row;
   object-fit: cover;
   align-items: center;
   justify-content: space-around;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   overflow: hidden;
   margin: 40px;
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 5% 40% 40% 15%;
+  grid-template-areas:
+    "checkbox pic title title"
+    "checkbox pic quantity price";
+}
+
+.itemCheckbox {
+  grid-area: checkbox;
 }
 
 .cartItemImage {
-  padding: 10px;
-  width: 10%;
-  flex-shrink: 1;
+  grid-area: pic;
+  width: 90%;
 }
 
-.cartHeader {
-  display: flex;
-  border-bottom: 2px, solid, black;
-  justify-content: space-around;
+
+
+.itemTitle {
+  grid-area: title;
+  justify-self: start;
+  padding: 0;
+  text-align: left;
+}
+
+.itemPrice {
+  grid-area: price;
+  font-weight: bold;
+}
+
+.itemQuantityBox {
+  height: 100%;
+  width: 100%;
+  grid-area: quantity;
+  display: grid;
   align-items: center;
+  justify-items: center;
+  grid-template-rows: 1fr 0.5fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: 
+    "count  count setCountAdd setCountMinus  ."
+    "remove .     .           .              ."
 }
 
-.cartSum {
-  font-family: monospace;
+.itemCount {
+  grid-area: count;
+  justify-self: start;
+  color: black;
+  margin: 0;
+  font-size: 20px; 
+}
+
+.itemCountButAdd {
+  grid-area: setCountAdd;
+  color: black;
+  background-color: white;
+  border: 0.1em solid black;
+  height: 100%;
+  width: 90%;
+  margin: 0.2em;
+}
+
+.itemCountButMinus {
+  grid-area: setCountMinus;
+  color: black;
+  background-color: white;
+  border: 0.1em solid black;
+  height: 100%;
+  width: 90%;
+}
+
+.removeBut {
+  grid-area: remove;
+  justify-self: start;
+  align-self: center;
+  background-color: white;
+  border: 0px;
+  margin: 0;
+  padding: 0;
+  color: gray;
+  font-size: 10px;
+}
+
+.cartTitle {
+  font-size: 24px;
+  font-weight: bold;
 }
