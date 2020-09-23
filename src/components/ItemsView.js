@@ -3,12 +3,13 @@ import styles from "../stylesheets/ItemsView.module.css";
 import itemsCatalog from "../itemsInfo.json";
 import {Link, useParams} from "react-router-dom";
 import {addItemToCart} from "../states/cart.actions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 export const OneItem = (props) => {
   const targetLink = "/item/" + props.itemID;
   const dispatch = props.dispatch || (()=>{console.log("UI mode")})
-  const [clicked, setClicked] = useState(false)
+  const itemID = props.itemID;
+  const addedToCart = useSelector(state=>state.cart)[itemID] ? true : false;
   return (
     <div className={styles.ItemCard}>
 
@@ -32,13 +33,12 @@ export const OneItem = (props) => {
           {`${props.description}`}
         </p>
 
-        <button className={clicked? styles.ButtonClicked : styles.Button}
+        <button className={addedToCart? styles.ButtonClicked : styles.Button}
           onClick={(e)=>{
             e.preventDefault;
             dispatch(addItemToCart(props.itemID));
-            setClicked(true);
           }}>
-            {clicked ? "added to cart" : "add to cart"}
+            {addedToCart ? "added to cart" : "add to cart"}
           </button>
 
       </div>
