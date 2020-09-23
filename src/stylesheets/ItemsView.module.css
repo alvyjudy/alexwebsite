@@ -28,14 +28,11 @@
   font-family: monospace;
   height: 48%;
   display: grid;
-  padding: 0 0.5em 2% 0.5em;
-  grid-template-rows: repeat(5, 20%);
+  padding: 0.2em 0.5em 0.2em 0.5em;
+  grid-template-rows: 2fr 1fr;
   grid-template-columns: 50% 50%;
   grid-template-areas: 
     "title  title"
-    "price  price"
-    "des    des"
-    "des    des"
     "but1   but2";
 }
 
@@ -47,7 +44,7 @@
   margin: 0;
   padding: 0;
   overflow: hidden;
-  white-space: nowrap;
+  font-size: 20px;
 }
 
 .ItemPrice {
@@ -55,22 +52,15 @@
   color: black;
   margin: 0;
   padding: 0;
-  grid-area: price;
-  font-size: 12px;
+  grid-area: but1;
+  font-size: 20px;
+  font-weight: bold;
   overflow: hidden;
 }
 
-.ItemDescription {
-  text-align: center;
-  color: black;
-  margin: 0;
-  padding: 0;
-  grid-area: des;
-  overflow: hidden;
-}
 
 .Button {
-  grid-area: but1;
+  grid-area: but2;
   flex-shrink: 2;
   border: 1px solid navy;
   font-family: monospace;
@@ -81,7 +71,7 @@
 }
 
 .ButtonClicked {
-  grid-area: but1;
+  grid-area: but2;
   flex-shrink: 2;
   border: 1px solid navy;
   font-family: monospace;

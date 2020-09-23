@@ -29,10 +29,6 @@ export const OneItem = (props) => {
           {`${props.price} CAD$`}
         </p>
 
-        <p className={styles.ItemDescription}>
-          {`${props.description}`}
-        </p>
-
         <button className={addedToCart? styles.ButtonClicked : styles.Button}
           onClick={(e)=>{
             e.preventDefault;
