@@ -62,8 +62,10 @@ export const Item = ({itemID}) => {
   const count = itemState.itemCount;
   const checked = itemState.checked;
 
+  const [removed, setRemove] = useState(false);
+
   return (
-    <div className={styles.cartItem}>
+    <div className={removed ? styles.cartItemRemoved : styles.cartItem}>
 
       <input 
         type="checkbox" 
@@ -94,7 +96,8 @@ export const Item = ({itemID}) => {
 
         <button className={styles.removeBut}
         onClick={()=>{
-          dispatch(rmItemFromCart(itemID))
+          setRemove(true)
+          setTimeout(()=>{dispatch(rmItemFromCart(itemID))}, 500)
         }}>Remove</button>
       
       </div>

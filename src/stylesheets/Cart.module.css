@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-.cartItem {
+.cartItem, .cartItemRemoved {
   height: 140px;
   object-fit: cover;
   align-items: center;
@@ -25,6 +25,14 @@
   grid-template-areas:
     "checkbox pic title title"
     "checkbox pic quantity price";
+
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+}
+
+.cartItemRemoved {
+  opacity: 0;
 }
 
 .itemCheckbox {
