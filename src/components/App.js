@@ -9,9 +9,8 @@ import {Login} from "./LoginView.js";
 
 const App = (props) => {
   const loggedIn = useSelector(state=>state.auth).loggedIn
-
-  return (
-    <BrowserRouter>
+  return ( 
+    <React.Fragment>
       {loggedIn ? <LoggedInNavBar /> : <LoggedOutNavBar />}
       <Switch>
         <Route path="/items/:category">
@@ -34,7 +33,7 @@ const App = (props) => {
         </Route>
         
       </Switch>
-    </BrowserRouter>
+    </React.Fragment>
 
   );
 }
