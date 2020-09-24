@@ -34,7 +34,7 @@ export const OneItem = (props) => {
             e.preventDefault;
             dispatch(addItemToCart(props.itemID));
           }}>
-            {addedToCart ? "added to cart" : "add to cart"}
+            {addedToCart ? "Added to cart" : "Add"}
           </button>
 
       </div>

@@ -59,24 +59,23 @@
 }
 
 
-.Button {
+.Button, .ButtonClicked {
   grid-area: but2;
   flex-shrink: 2;
-  border: 1px solid navy;
+  border: 0;
+  width: 100%;
   font-family: monospace;
   color: white;
-  background-color: navy;
+  background-color: darkslateblue;
   padding: 10px;
   white-space: nowrap;
+  transition: background-color;
+  transition-duration: 0.2s;
 }
 
+
+
 .ButtonClicked {
-  grid-area: but2;
-  flex-shrink: 2;
-  border: 1px solid navy;
-  font-family: monospace;
-  color: white;
   background-color: black;
-  padding: 10px;
-  white-space: nowrap;
 }
+
