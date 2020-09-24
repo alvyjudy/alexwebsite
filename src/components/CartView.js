@@ -28,6 +28,10 @@ export const CartView = () => {
       return accu + (item.checked ? itemPrice : 0)
     }, 0
   )
+  
+  const itemToCheckout = Object.values(items).filter(
+    item=>item.checked
+  )
 
   const itemsJSX = Object.values(items).map(
     (item) => {
@@ -42,11 +46,18 @@ export const CartView = () => {
       <p className={styles.cartTitle}>Shopping Cart</p>
 
       {itemsJSX.length === 0 ? 
-
-        <p className={styles.cartTitle}>Your Shopping Cart is empty</p> : 
-        <p className={styles.cartTitle}>Subtotal: {subtotal} CAD$</p>
-
+        <p className={styles.cartSubTitle}>Your Shopping Cart is empty</p> : 
+        <p className={styles.cartSubTitle}>Subtotal: {subtotal} CAD$</p>
       }
+
+      <button 
+        className={styles.checkoutBut}
+        onClick={(e)=>{
+          e.preventDefault();
+          console.log(itemToCheckout)
+
+        }}
+      >Checkout</button>
 
       <div className={styles.Container}>{itemsJSX}</div>
     </div>

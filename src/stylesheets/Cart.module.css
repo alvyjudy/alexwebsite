@@ -1,5 +1,6 @@
 /*shopping cart */
 .Container {
+  grid-area: cartitems;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -112,7 +113,51 @@
   font-size: 10px;
 }
 
-.cartTitle {
+.cartTitle, .cartSubTitle {
+  grid-area: title;
+  justify-self: start;
+  align-self: center;
   font-size: 24px;
   font-weight: bold;
+  margin: 0;
 }
+
+.cartSubTitle {
+  grid-area: subtitle;
+  align-self: start;
+}
+
+.cart {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 5em 5em 1fr;
+  grid-template-areas: 
+    "title but1"
+    "subtitle br"
+    "cartitems  cartitems"
+  ;
+  align-items: center;
+  justify-items: center;
+}
+
+.checkoutBut {
+  grid-area: but1;
+  justify-self: end;
+  padding: 1em;
+  height: 50%;
+  width: 50%;
+  font-family: serif;
+  font-size: 20px;
+  color: black;
+  background-color: white;
+  border: 2px black solid;
+  padding: 10px;
+  white-space: nowrap;
+  transition: background-color;
+  transition-duration: 0.2s;
+}
+  
+.checkoutBut:active {
+  background-color: gainsboro;
+}
+  
