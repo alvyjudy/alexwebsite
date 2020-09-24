@@ -9,14 +9,13 @@
 }
 
 .cartItem, .cartItemRemoved {
-  height: 140px;
-  object-fit: cover;
+  height: 10em;
+  width: 90%;
   align-items: center;
   justify-content: space-around;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   overflow: hidden;
   margin: 40px;
-
   display: grid;
   align-items: center;
   justify-items: center;
@@ -41,7 +40,9 @@
 
 .cartItemImage {
   grid-area: pic;
-  width: 90%;
+  object-fit: scale-down;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 
