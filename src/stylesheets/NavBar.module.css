@@ -2,18 +2,18 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-end;
+  border-bottom: 2px solid black;
 }
 
-.NavBarItem {
+.NavBarItem, .NavBarItemIcon {
   color: black;
   cursor: pointer;
   text-decoration: none;
-  margin: 40px 20px;
-  font-size: 3em;
+  margin: 2em 1em 0.5em 0;
+  font-size: 30px;;
 }
 
 .NavBarItemIcon {
-  composes: NavBarItem;
   position: relative;
 }
 
