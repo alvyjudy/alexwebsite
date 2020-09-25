@@ -25,7 +25,32 @@ To develop the front end, invoke ``npx webpack -w --mode production``, this
 will continuously bundle files from ``src`` to ``dist``, then invoke
 ``PORT=3001 node serve.js`` to serve those files on ``http://localhost:3001``.
 
-# On Google Cloud
+## Communicating with the backend
+
+All communications with the backend should be done with redux thunk, defined
+in a series of files ending with `.thunk.js` under the `states` folder. 
+
+Given that both the frontend and backend could be deployed with different
+versions, it is important to pair them up properly. This is done by prepending
+the following line of code on top of each `thunk` file:
+
+```javascript
+const BACKEND = process.env.APIENDPOINT || (window.location.toString() + '/api')
+```
+
+When developing locally, I use the built-in development server from ParcelJS,
+which does not seem to support CORS or proxying. To allow AJAX request to
+the backend server, CORS must be enabled in the browser and in the `.env` file
+(adjacent to package.json) specify the backend hostname for the key
+`APIENDPOINT`. 
+
+Upon deployment, AJAX request sent will use the server hostname, suffixed with
+`/api`. The server is responsible to transmit these request to the backend
+and send the response back to client. 
+
+WIP: add some checkpoints
+
+## On Google Cloud
 
 This repository is connected to google cloud and a new version of the website
 will be built and hosted when a tag matching ``^v[0-9]+$`` (e.g. ``v1``,
