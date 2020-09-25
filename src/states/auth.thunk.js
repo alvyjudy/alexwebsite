@@ -1,3 +1,6 @@
+const BACKEND = process.env.APIENDPOINT || (window.location.host + '/api')
+console.log("Backend address:", BACKEND)
+
 import axios from "axios";
 
 import {
@@ -6,12 +9,13 @@ import {
   loginFail
 } from "./auth.actions";
 
-const BACKEND = process.env.APIENDPOINT
+
 
 export const loginUser = (email, password) => async dispatch => {
   dispatch(inProgress())
   console.log("dispatching, endpoint:", BACKEND)
   await axios({
+    baseURL: "https://",
     url: BACKEND + "/login",
     method: "post",
     timeout: 5000,
