@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {LoggedInNavBar, LoggedOutNavBar} from "./NavBar.js";
 import CategoriesView from "./CategoriesView.js";
 import {ItemsView} from "./ItemsView";
-import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import {CartView} from "./CartView.js";
 import {useSelector} from "react-redux";
 import {Login} from "./LoginView.js";
+import {PageNotFound} from "./PageNotFound";
 
 const App = (props) => {
   const loggedIn = useSelector(state=>state.auth).loggedIn
@@ -13,23 +14,23 @@ const App = (props) => {
     <React.Fragment>
       {loggedIn ? <LoggedInNavBar /> : <LoggedOutNavBar />}
       <Switch>
-        <Route path="/items/:category">
+        <Route exact path="/items/:category">
           <ItemsView />
         </Route>
-        <Route path="/cart">
+        <Route exact path="/cart">
           <CartView />
         </Route>
 
-        <Route path="/login">
+        <Route exact path="/login">
           <Login />
         </Route>
 
-        <Route path="/">
-          <CategoriesView />
+        <Route exact path="/">
+          <CategoriesView/>
         </Route>
 
         <Route>
-          No match!
+          <PageNotFound/>
         </Route>
         
       </Switch>

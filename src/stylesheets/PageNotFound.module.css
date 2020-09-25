@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: monospace;
+  border: 0.1em black solid;
+  margin: 1em
+}
+
+.title {
+  margin: 1em auto;
+  font-size: 40px;
+}
+
+.subtitle {
+  margin: auto;
+}
+
+.url {
+  margin: 0.5em auto;
+}
