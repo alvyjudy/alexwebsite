@@ -1,9 +1,15 @@
-# Project overview (WIP)
+# Project overview
 
 This is the frontend codebase that's intended to communicate with the 
-(backend)[https://github.com/alvyjudy/alexwebsite-backend-2]. The frontend
+[backend](https://github.com/alvyjudy/alexwebsite-backend-2). The frontend
 will be served on a dedicated server that also acts as a proxy, such that
 incoming client request will be forwarded to the backend to avoid CORS issue.
+
+There are two main branch: master and future. Future is experimental and master
+is stable. Each has their own CI/CD set up.
+
+- future build: https://frontend-future-dot-kahului.nn.r.appspot.com
+- master build: https://kahului.nn.r.appspot.com
 
 
 # Development guide
