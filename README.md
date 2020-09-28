@@ -41,20 +41,12 @@ versions, it is important to pair them up properly. This is done by prepending
 the following line of code on top of each `thunk` file:
 
 ```javascript
-const BACKEND = process.env.APIENDPOINT || (window.location.toString() + '/api')
+const BACKEND = process.env.API + '/api'
 ```
 
-When developing locally, I use the built-in development server from ParcelJS,
-which does not seem to support CORS or proxying. To allow AJAX request to
-the backend server, CORS must be enabled in the browser and in the `.env` file
-(adjacent to package.json) specify the backend hostname for the key
-`APIENDPOINT`. 
-
-Upon deployment, AJAX request sent will use the server hostname, suffixed with
-`/api`. The server is responsible to transmit these request to the backend
-and send the response back to client. 
-
-WIP: add some checkpoints
+Given the problems associated with CORS such as preflight request, it seems
+that proxying is a better option. The ParcelJS API actually plays well with
+express and it appears that a proxy middleware could easily be the solution.
 
 ## On Google Cloud
 
