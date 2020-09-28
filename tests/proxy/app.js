@@ -19,15 +19,14 @@ const store = createStore(reducer, /* preloadedState, */ composeEnhancers(
 const AjaxReq = props => {
   return <button onClick={e=>{
     e.preventDefault();
-    console.log(location.host)
+    axios.interceptors.request.use(config=>{console.log(config); return config})
     const reqObj = axios({
-      baseURL:"http://localhost:3003",
-      url: "/log",
+      url: "/api/",
       method: 'get'
     })
     .then(res=>{console.log("result", res)})
     .catch(e=>{
-      console.log('error', e.request, e.config, e.response)
+      console.log('error', e)
     })
   }}>click me</button>
 }
