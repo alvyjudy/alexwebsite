@@ -1,10 +1,9 @@
-const path = require("path");
-require("dotenv").config({path:path.resolve(__dirname, ".env")})
+
 const Bundler = require('parcel-bundler');
 const app = require('express')();
 const {createProxyMiddleware} = require("http-proxy-middleware");
 
-const file = path.resolve(__dirname, process.env.ENTRY_DEV);
+const file = path.resolve(__dirname, "../src/entry.html");
 const options = {
   watch: true,
   cache: false,
@@ -21,11 +20,9 @@ app.use("/api",
   }),
 )
 
-// Let express use the bundler middleware, this will let Parcel handle every request over your express server
 app.use(
   (req, res, next)=>{console.log('to parcel'); next()},
   bundler.middleware(),
 );
 
-// Listen on port 8080
-app.listen(process.env.PORT);
+module.exports = app

@@ -5,14 +5,7 @@ const express = require("express")
 const app = express();
 const {createProxyMiddleware} = require("http-proxy-middleware");
 
-const file = path.resolve(__dirname, process.env.ENTRY_PROD);
-const options = {
-  watch: true,
-  cache: false,
-}; // See options section of api docs, for the possibilities
-
-// Initialize a new bundler using a file and options
-const bundler = new Bundler(file, options);
+const file = path.resolve(__dirname, "../dist/entry.html");
 
 app.use("/api", 
   (req, res, next)=>{console.log("proxy to backend"); next()},
@@ -27,9 +20,7 @@ app.use(
 );
 
 app.use(
-  (req, res) => {res.status(200).sendFile(path.resolve(__dirname, ('./dist/entry.html')))}
+  (req, res) => {res.status(200).sendFile(file)}
 )
 
-// Listen on port 8080
-app.listen(process.env.PORT, ()=>{
-  console.log(`Server running on ${process.env.PORT}`)});
+module.exports = app
