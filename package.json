@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build": "python3 scripts/csvToJson.py && parcel build -d dist src/entry.html",
     "start": "node serve.js"
@@ -23,7 +22,9 @@
     "dotenv": "^8.2.0",
     "http-terminator": "^2.0.3",
     "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
     "parcel": "",
+    "parcel-bundler": "^1.12.4",
     "postcss": "^8.0.2",
     "postcss-modules": "^3.2.2",
     "react": "^16.13.1",
